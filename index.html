@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aklat ng mga May-akda, Teorya at Bayani</title>
+  <title>Aklat ng mga Salita, Author, Teorya at Bayani</title>
   <style>
     :root {
-      --bg-color: #f9f6f0;
+      --bg-color: #f7f5f0;
       --card-bg: #ffffff;
-      --text-color: #2c3e50;
-      --primary-color: #4a3b32;
-      --border-color: #dcd0c0;
-      --shadow: 0 4px 15px rgba(0,0,0,0.06);
+      --text-color: #2b2b2b;
+      --primary-color: #3e2723;
+      --border-color: #d7ccc8;
+      --highlight-color: #d84315;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    body.theme-science { --primary-color: #2e5a44; }
-    body.theme-math { --primary-color: #1f4e79; }
-    body.theme-filipino { --primary-color: #8b4513; }
-    body.theme-research { --primary-color: #4a2e5a; }
-    body.theme-humanities { --primary-color: #7b241c; }
-    body.theme-accountancy { --primary-color: #115e59; }
-    body.theme-history { --primary-color: #7e5109; }
+    body.theme-science { --primary-color: #1b5e20; --highlight-color: #2e7d32; }
+    body.theme-math { --primary-color: #0d47a1; --highlight-color: #1565c0; }
+    body.theme-filipino { --primary-color: #bf360c; --highlight-color: #d84315; }
+    body.theme-research { --primary-color: #4a148c; --highlight-color: #6a1b9a; }
+    body.theme-humanities { --primary-color: #880e4f; --highlight-color: #ad1457; }
+    body.theme-accountancy { --primary-color: #004d40; --highlight-color: #00695c; }
+    body.theme-history { --primary-color: #e65100; --highlight-color: #f57c00; }
 
     body {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -28,7 +29,7 @@
       color: var(--text-color);
       margin: 0;
       padding: 20px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     header {
@@ -39,6 +40,7 @@
     }
 
     h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2.2rem; }
+    .subtitle { font-style: italic; color: #555; }
 
     .sector-nav {
       display: flex;
@@ -71,16 +73,16 @@
       align-items: center;
       max-width: 900px;
       margin: 0 auto 20px auto;
-      gap: 10px;
     }
 
     .search-bar {
       padding: 10px 15px;
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       border: 1px solid var(--primary-color);
       border-radius: 4px;
       font-family: inherit;
+      font-size: 1rem;
     }
 
     .book-container {
@@ -91,7 +93,6 @@
       gap: 20px;
     }
 
-    /* Entry / Chapter Styling */
     .book-chapter {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -109,17 +110,29 @@
     }
 
     .author-portrait {
-      width: 130px;
-      height: 160px;
+      width: 120px;
+      height: 150px;
       object-fit: cover;
       border-radius: 4px;
-      border: 2px solid var(--border-color);
+      border: 1px solid var(--border-color);
       flex-shrink: 0;
     }
 
     .author-details { flex-grow: 1; }
-    .author-name { font-size: 1.5rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
-    .author-role { font-style: italic; color: #666; margin-bottom: 10px; font-size: 0.95rem; }
+    .word-header { font-size: 1.4rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
+    .author-name { font-weight: bold; font-size: 1.1rem; color: #333; margin-bottom: 5px; }
+
+    /* Naka-highlight na mga gawa/ambag */
+    .highlight-work {
+      background-color: #fff3e0;
+      color: var(--highlight-color);
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border-left: 3px solid var(--highlight-color);
+      display: inline-block;
+      margin: 4px 0;
+    }
 
     .contribution-box {
       background: #faf8f5;
@@ -128,8 +141,6 @@
       border-radius: 4px;
       margin-top: 10px;
     }
-
-    .topic-title { font-size: 1.15rem; font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
 
     .pagination-container {
       display: flex;
@@ -155,8 +166,8 @@
 <body class="theme-science">
 
   <header>
-    <h1>📖 Aklat ng mga May-akda, Teorya at Bayani</h1>
-    <p>Isang pormal na talaan at pagpapakilala sa mga may-akda, siyentipiko, at bayani kasama ang kanilang mga naiambag sa kani-kanilang larangan.</p>
+    <h1>📖 Aklat ng mga Salita, Author, Teorya at Bayani</h1>
+    <p class="subtitle">Isang komprehensibong talaan ng mga akademikong salita at ang malalim na kaligiran ng mga may-akda, siyentipiko, at bayaning nagpropona ng mga ito.</p>
   </header>
 
   <div class="sector-nav">
@@ -170,7 +181,7 @@
   </div>
 
   <div class="controls-panel">
-    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng May-akda, Bayani, o Teorya..." oninput="filterWords()">
+    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng Salita, Author, o Teorya..." oninput="filterWords()">
   </div>
 
   <div id="book-view" class="book-container"></div>
@@ -182,7 +193,7 @@
   </div>
 
   <script>
-    // Tiyak na talaan ng mga May-akda na MAY TOTOONG LARAWAN LAMANG
+    // Tiyak na larawan para sa may totoong litrato lamang
     const realAuthorImages = {
       "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
       "Isaac Newton": "https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg",
@@ -218,49 +229,51 @@
       history: ["Jose Rizal", "Andres Bonifacio", "Apolinario Mabini", "Melchora Aquino", "Arnold Toynbee"]
     };
 
+    // Paunang detalyadong data na pinagsama ang salita, author, at ang kanilang pambihirang gawa
     const baseData = {
       science: [
-        { word: "Theory of Relativity", author: "Albert Einstein", role: "Siyentipiko at Theoretical Physicist", intro: "Si Albert Einstein ay isa sa pinakadakilang siyentipiko sa kasaysayan na nagpabago sa ating pag-unawa sa kalawakan at pisika.", def: "Teorya ng ugnayan ng espasyo, oras, at grabidad.", background: "Nai-publish noong 1905 at 1915, pinatunayan nito na ang oras at espasyo ay hindi absolute kundi nakadepende sa bilis ng observer." },
-        { word: "Laws of Motion", author: "Isaac Newton", role: "Mathematician at Physicist", intro: "Si Sir Isaac Newton ang naglagay ng pundasyon para sa Classical Physics sa pamamagitan ng kaniyang pag-aaral sa galaw at grabidad.", def: "Tatlong batas ng paggalaw ng mga bagay.", background: "Isinulat sa Principia Mathematica (1687), ang tatlong batas na ito (Inertia, F=ma, Action-Reaction) ang nagpaliwanag sa galaw ng mga bagay sa mundo at kalawakan." }
+        { word: "Relativity (E=mc²)", author: "Albert Einstein", bio: "Isang Theoretical Physicist na isinilang sa Germany. Kilala sa kaniyang pambihirang talino mula sa pagkabata at sa kaniyang mga Miracle Year papers noong 1905.", work: "Pagsulat ng General at Special Theory of Relativity at Pagpapaliwanag ng Photoelectric Effect.", def: "Teorya ng ugnayan ng espasyo, oras, at grabidad.", background: "Pinatunayan nito na ang oras at espasyo ay nakadepende sa bilis ng nagmamasid at ang enerhiya at masa ay iisa." },
+        { word: "Laws of Motion", author: "Isaac Newton", bio: "Isang Ingles na mathematician at physicist na nag-aral sa Cambridge University. Nag-isa siya noong may pandemya ng bubonic plague kung saan nabuo ang kaniyang mga dakilang teorya.", work: "Paglikha ng Tatlong Batas ng Paggalaw (Laws of Motion) at ng Universal Law of Gravitation.", def: "Tatlong batas ng paggalaw ng mga bagay.", background: "Isinulat sa Principia Mathematica (1687), ito ang naging batayan ng modernong inhinyerhiya at pisika." }
       ],
       math: [
-        { word: "Pythagorean Theorem", author: "Pythagoras", role: "Sinaunang Pilosopong Griyego at Matematiko", intro: "Si Pythagoras ang nagtatag ng pilosopiya at matematika sa sinaunang Gresya na nakatuon sa ugnayan ng mga numero at geometry.", def: "Pormula para sa mga gilid ng tamang tatsulok ($a^2 + b^2 = c^2$).", background: "Ang pormulang ito ang naging batayan ng Trigonometry at Euclidean Geometry na ginagamit sa arkitektura, engineering, at nabigasyon." }
+        { word: "Pythagorean Theorem", author: "Pythagoras", bio: "Isang sinaunang pilosopong Griyego na nagtatag ng isang relihiyoso at siyentipikong lipunan na tinatawag na 'Pythagoreans'. Naniniwala siya na ang sansinukob ay nabuo batay sa mga numero.", work: "Pagtuklas at Pagpapatunay sa Geometric Formula na $a^2 + b^2 = c^2$.", def: "Pormula para sa mga gilid ng tamang tatsulok.", background: "Ito ang pangunahing haligi ng Trigonometry at geometry na ginagamit sa arkitektura at nabigasyon." }
       ],
       filipino: [
-        { word: "Balarila ng Wikang Pambansa", author: "Lope K. Santos", role: "Ama ng Balarilang Tagalog", intro: "Si Lope K. Santos ay isang nobelista, makata, at dalubhasa sa wika na nag-ukol ng buhay para sa pambansang wika ng Pilipinas.", def: "Unang komprehensibong balarila para sa wikang Tagalog/Filipino.", background: "Inilabas noong 1940, binuo nito ang Abakada at ang pormal na tuntunin sa grammar na naging batayan ng pagtuturo ng Filipino sa buong bansa." }
+        { word: "Balarila ng Wikang Pambansa", author: "Lope K. Santos", bio: "Isang tanyag na nobelista, makata, at dalubhasa sa wika mula sa Rizal. Kilala rin bilang Ama ng Balarilang Tagalog at naging senador ng Pilipinas.", work: "Pagbuo ng Abakada at Pagsulat ng Unang Balarila ng Wikang Pambansa noong 1940.", def: "Pormal na pambalarilang tuntunin ng wikang Tagalog at Filipino.", background: "Nagbigay ng estruktura at pormal na panuntunan sa pagtuturo ng wikang pambansa sa buong kapuluan." }
       ],
       research: [
-        { word: "Falsifiability Criterion", author: "Karl Popper", role: "Pilosopo ng Agham", intro: "Si Karl Popper ay isa sa pinakamaiimpluwensyang pilosopo noong ika-20 siglo na nagbigay ng pamantayan sa tunay na siyentipikong pananaliksik.", def: "Prinsipyo na ang isang teorya ay dapat pwedeng masubukan at mapatunayang mali.", background: "Iminungkahi ni Popper na ang isang pahayag ay siyentipiko lamang kung may paraan upang ito ay subukin at patunayang mali kung hindi ito tumutugma sa katotohanan." }
+        { word: "Falsifiability Criterion", author: "Karl Popper", bio: "Isang Austrian-British na pilosopo na itinuturing na isa sa pinakadakilang pilosopo ng agham noong ika-20 siglo.", work: "Pormulasyon ng Prinsipyo ng Falsifiability bilang Pamantayan ng Siyentipikong Pananaliksik.", def: "Pamantayan na ang isang teorya ay dapat pwedeng masubukan at patunayang mali.", background: "Binago nito ang metodolohiya ng pananaliksik sa pamamagitan ng paghihiwalay ng tunay na agham sa pseudoscience." }
       ],
       humanities: [
-        { word: "Social Contract Theory", author: "John Locke", role: "Pilosopo ng Enlightenment", intro: "Si John Locke ay kilala bilang Ama ng Liberalismo na nagtanggol sa likas na karapatan ng tao tulad ng buhay, kalayaan, at ari-arian.", def: "Teorya ukol sa kasunduan ng mamamayan at pamahalaan.", background: "Ayon sa kaniya, ang pamahalaan ay binuo lamang upang protektahan ang karapatan ng tao, at kung mabigo ito, may karapatan ang mamamayan na palitan ito." }
+        { word: "Social Contract Theory", author: "John Locke", bio: "Isang Ingles na pilosopo na itinuturing na Ama ng Liberalismo. Ang kaniyang mga kaisipan ay nagkaroon ng malaking impluwensya sa American Revolution.", work: "Pagsulat ng Two Treatises of Government at Pagpapaunlad ng Likas na Karapatan ng Tao.", def: "Teorya ukol sa kasunduan ng mamamayan at ng pamahalaan.", background: "Binigyang-diin na ang pamahalaan ay may tungkuling protektahan ang buhay, kalayaan, at ari-arian ng tao." }
       ],
       accountancy: [
-        { word: "Double-Entry Bookkeeping", author: "Luca Pacioli", role: "Ama ng Accountancy", intro: "Si Fra Luca Pacioli ay isang Italyanong monghe at matematiko na nag-dokumento sa kauna-unahang organisadong sistema ng accounting.", def: "Sistema ng pagtatala ng pinansyal kung saan bawat transaksyon ay may debit at credit.", background: "Inilathala noong 1494, ang kaniyang pamamaraan ang naging batayan ng lahat ng modernong accounting at pag-aaudit sa negosyo ngayon." }
+        { word: "Double-Entry Bookkeeping", author: "Luca Pacioli", bio: "Isang Italyanong Franciscan friar at mathematician na matalik na kaibigan ni Leonardo da Vinci.", work: "Pag-dokumento at Paglikha ng Modernong Sistema ng Double-Entry Accounting (Summa de Arithmetica, 1494).", def: "Pagtatala ng transaksyong pinansyal gamit ang pantay na Debit at Credit.", background: "Ito ang batayan ng lahat ng modernong accounting system, auditing, at pag-uulat ng pinansya sa buong mundo." }
       ],
       history: [
-        { word: "Kartilya ng Katipunan", author: "Andres Bonifacio", role: "Ama ng Himagsikang Pilipino", intro: "Si Andres Bonifacio ang nagtatag ng KKK na lumaban sa pananakop ng mga Kastila upang makamit ang kalayaan ng Pilipinas.", def: "Mga aral at prinsipyo ng pamumuhay at pakikibaka ng mga Katipunero.", background: "Isinulat upang maging gabay sa moralidad, disiplina, at pagmamahal sa bayan ng mga kasapi ng Katipunan sa pakikipaglaban." }
+        { word: "Kartilya ng Katipunan", author: "Andres Bonifacio", bio: "Isang dakilang Pilipinong rebolusyonaryo mula sa Tondo, Maynila. Nagtatag ng KKK at naglingkod bilang Supremo ng Himagsikan.", work: "Pagtatag ng KKK at Pagsulat ng mga Tuntunin at Moralidad ng Himagsikan para sa Kalayaan.", def: "Aral at kodigo ng etika para sa mga rebolusyonaryong Katipunero.", background: "Nagsilbing gabay sa disiplina, pagmamahal sa bayan, at moralidad ng mga Pilipinong lumaban sa pananakop ng Espanya." }
       ]
     };
 
     const vocabularyData = {};
 
+    // Bumuo ng 1000 salita bawat sektor na nakatali pa rin sa partikular na sektor, author, at kaniyang gawa
     Object.keys(baseData).forEach(sector => {
       vocabularyData[sector] = [...baseData[sector]];
       const targetWords = 1000;
 
       for (let i = vocabularyData[sector].length + 1; i <= targetWords; i++) {
         let baseAuthor = authorsPool[sector][i % authorsPool[sector].length];
-        let authorName = baseAuthor + ` (May-akda #${i})`;
+        let authorName = baseAuthor + ` (Suri #${i})`;
 
         vocabularyData[sector].push({
-          word: `${sector.charAt(0).toUpperCase() + sector.slice(1)} Teorya/Pag-aaral #${i}`,
+          word: `${sector.charAt(0).toUpperCase() + sector.slice(1)} Termino #${i}`,
           author: authorName,
           baseAuthor: baseAuthor,
-          role: `Manaliksik at Proponent sa Sektor ng ${sector.toUpperCase()}`,
-          intro: `Si ${authorName} ay isang kilalang eksperto na nag-ambag ng mahahalagang kaisipan at pag-aaral sa larangang ito.`,
-          def: `Akademikong depinisyon at teorya para sa modyul #${i}.`,
-          background: `Ito ang pinalawak na background study para sa modyul #${i}. Tinatalakay rito ang historikal na konteksto at mga aplikasyon ng kaniyang pag-aaral.`
+          bio: `Si ${authorName} ay isang dedikadong mananaliksik at dalubhasa na nagsagawa ng malalim na pag-aaral sa larangan ng ${sector.toUpperCase()}.`,
+          work: `Pagsulat ng Modyul at Akademikong Papel sa Teorya #${i} para sa Sektor ng ${sector.toUpperCase()}.`,
+          def: `Akademikong batayan at terminolohiya para sa paksa #${i}.`,
+          background: `Ito ang pinalawak na konteksto at pamamaraan ng pag-aaral na binuo upang mapalawak ang kaalaman sa akademikong sektor na ito.`
         });
       }
     });
@@ -285,7 +298,8 @@
       filteredList = vocabularyData[currentSector].filter(item => 
         item.word.toLowerCase().includes(query) || 
         item.author.toLowerCase().includes(query) ||
-        item.def.toLowerCase().includes(query)
+        item.def.toLowerCase().includes(query) ||
+        item.work.toLowerCase().includes(query)
       );
       currentPage = 1;
       renderBook();
@@ -306,22 +320,22 @@
         let authorKey = item.baseAuthor || item.author;
         let imgUrl = realAuthorImages[authorKey];
 
-        // Kung may totoong larawan, ipakita. Kung wala, WALA nang lalabas na red image placeholder.
+        // Larawan lang kapag may totoong file—walang mga lalabas na kulay pulang box
         let imageHTML = imgUrl ? `<img src="${imgUrl}" alt="${item.author}" class="author-portrait">` : '';
 
         chapter.innerHTML = `
           <div class="author-profile">
             ${imageHTML}
             <div class="author-details">
-              <h2 class="author-name">👤 ${item.author}</h2>
-              <div class="author-role">${item.role}</div>
-              <p><strong>Sino siya:</strong> ${item.intro}</p>
+              <h2 class="word-header">📌 Salita/Termino: ${item.word}</h2>
+              <div class="author-name">👤 Proponent/Author: ${item.author}</div>
+              <p><strong>📖 Kaligiran ng Pagkatao:</strong> ${item.bio}</p>
             </div>
           </div>
           <div class="contribution-box">
-            <div class="topic-title">📜 Naiambag na Teorya / Pag-aaral: ${item.word}</div>
-            <p><strong>Batayang Depinisyon:</strong> ${item.def}</p>
-            <p><strong>Pinalawak na Background at Kabayanihan/Pag-aaral:</strong><br>${item.background}</p>
+            <p><strong>🏆 Naiambag / Kabayanihan / Ginawa:</strong><br><span class="highlight-work">${item.work}</span></p>
+            <p><strong>📝 Batayang Depinisyon ng Salita:</strong> ${item.def}</p>
+            <p><strong>📚 Pinalawak na Kaligiran at Pag-aaral:</strong> ${item.background}</p>
           </div>
         `;
         container.appendChild(chapter);
@@ -339,7 +353,7 @@
       window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
-    // Initialize Page
+    // Unang pagpapatakbo ng system
     filterWords();
   </script>
 </body>
