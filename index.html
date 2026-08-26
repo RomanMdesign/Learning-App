@@ -3,264 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academic, Theories, Real Authors & Research Hub</title>
+  <title>Aklat ng mga May-akda, Teorya at Bayani</title>
   <style>
     :root {
-      --bg-color: #f4f6f9;
+      --bg-color: #f9f6f0;
       --card-bg: #ffffff;
       --text-color: #2c3e50;
-      --primary-color: #2b5876;
-      --shadow: 0 8px 20px rgba(0,0,0,0.08);
+      --primary-color: #4a3b32;
+      --border-color: #dcd0c0;
+      --shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
 
-    body.theme-science { --bg-color: #e8f5e9; --primary-color: #2e7d32; }
-    body.theme-math { --bg-color: #e3f2fd; --primary-color: #1565c0; }
-    body.theme-filipino { --bg-color: #fff8e1; --primary-color: #f57f17; }
-    body.theme-research { --bg-color: #f3e5f5; --primary-color: #6a1b9a; }
-    body.theme-humanities { --bg-color: #fbe9e7; --primary-color: #d84315; }
-    body.theme-accountancy { --bg-color: #e0f2f1; --primary-color: #00695c; }
-    body.theme-history { --bg-color: #fff3e0; --primary-color: #e65100; }
+    body.theme-science { --primary-color: #2e5a44; }
+    body.theme-math { --primary-color: #1f4e79; }
+    body.theme-filipino { --primary-color: #8b4513; }
+    body.theme-research { --primary-color: #4a2e5a; }
+    body.theme-humanities { --primary-color: #7b241c; }
+    body.theme-accountancy { --primary-color: #115e59; }
+    body.theme-history { --primary-color: #7e5109; }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Georgia', 'Times New Roman', serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
       padding: 20px;
-      transition: all 0.4s ease;
+      line-height: 1.6;
     }
 
-    header { text-align: center; margin-bottom: 20px; }
-    h1 { margin-bottom: 5px; color: var(--primary-color); }
-    .stat-badge { font-weight: bold; background: var(--primary-color); color: #fff; padding: 4px 12px; border-radius: 15px; }
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 15px;
+    }
+
+    h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2.2rem; }
 
     .sector-nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .sector-btn {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 25px;
+      padding: 8px 16px;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
       background-color: #fff;
-      color: #333;
+      color: var(--primary-color);
+      font-family: inherit;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
 
-    .sector-btn:hover, .sector-btn.active {
+    .sector-btn.active, .sector-btn:hover {
       background-color: var(--primary-color);
       color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .bg-info-btn {
-      display: block;
-      margin: 0 auto 20px auto;
-      padding: 8px 16px;
-      background: #fff;
-      border: 2px dashed var(--primary-color);
-      color: var(--primary-color);
-      font-weight: bold;
-      border-radius: 20px;
-      cursor: pointer;
     }
 
     .controls-panel {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto 20px auto;
       gap: 10px;
     }
 
     .search-bar {
       padding: 10px 15px;
-      width: 280px;
-      border: 2px solid var(--primary-color);
-      border-radius: 20px;
-      outline: none;
-      font-size: 0.95rem;
+      width: 100%;
+      max-width: 350px;
+      border: 1px solid var(--primary-color);
+      border-radius: 4px;
+      font-family: inherit;
     }
 
-    .mode-btn {
-      padding: 8px 16px;
-      border: 2px solid var(--primary-color);
-      background: transparent;
-      color: var(--primary-color);
-      font-weight: bold;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .mode-btn.active {
-      background: var(--primary-color);
-      color: #fff;
-    }
-
-    .vocab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 18px;
-      max-width: 1200px;
+    .book-container {
+      max-width: 900px;
       margin: 0 auto;
-    }
-
-    .vocab-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-      border-top: 5px solid var(--primary-color);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: transform 0.2s ease;
+      gap: 20px;
     }
 
-    .vocab-card:hover { transform: translateY(-3px); }
-
-    .card-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      object-position: top;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      background-color: #e0e0e0;
-    }
-
-    .word-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .word-title { font-size: 1.15rem; font-weight: bold; color: var(--primary-color); }
-
-    .tag-badge {
-      font-size: 0.75rem;
-      padding: 4px 8px;
-      border-radius: 12px;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .tag-proseso { background-color: #2980b9; }
-    .tag-konsepto { background-color: #8e44ad; }
-    .tag-elemento { background-color: #27ae60; }
-    .tag-teorya { background-color: #d35400; }
-    .tag-pinansyal { background-color: #16a085; }
-    .tag-sukat { background-color: #c0392b; }
-
-    .author-box {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      background: rgba(0,0,0,0.04);
-      padding: 4px 8px;
-      border-radius: 6px;
-      margin-top: 6px;
-      display: inline-block;
-    }
-
-    .definition { font-size: 0.9rem; line-height: 1.4; margin-top: 8px; }
-    .click-hint { font-size: 0.75rem; color: #888; margin-top: 8px; text-align: right; font-style: italic; }
-
-    /* Modal Styling */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal-content {
-      background: #fff;
+    /* Entry / Chapter Styling */
+    .book-chapter {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 6px solid var(--primary-color);
       padding: 25px;
-      border-radius: 12px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      position: relative;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
     }
 
-    .close-modal {
-      position: absolute;
-      top: 15px; right: 15px;
-      font-size: 1.5rem;
-      border: none;
-      background: none;
-      cursor: pointer;
+    .author-profile {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 15px;
     }
+
+    .author-portrait {
+      width: 130px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid var(--border-color);
+      flex-shrink: 0;
+    }
+
+    .author-details { flex-grow: 1; }
+    .author-name { font-size: 1.5rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
+    .author-role { font-style: italic; color: #666; margin-bottom: 10px; font-size: 0.95rem; }
+
+    .contribution-box {
+      background: #faf8f5;
+      border: 1px dashed var(--border-color);
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .topic-title { font-size: 1.15rem; font-weight: bold; color: var(--primary-color); margin-bottom: 5px; }
 
     .pagination-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      margin: 25px 0;
+      gap: 15px;
+      margin: 30px 0;
     }
 
     .page-btn {
-      padding: 8px 14px;
+      padding: 8px 16px;
       border: 1px solid var(--primary-color);
       background: #fff;
       color: var(--primary-color);
-      border-radius: 6px;
       cursor: pointer;
+      font-family: inherit;
       font-weight: bold;
     }
 
-    .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .quiz-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      display: none;
-    }
-
-    .quiz-option {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #fafafa;
-      text-align: left;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .quiz-option:hover { background: #f0f0f0; }
-    .score-box { text-align: center; font-size: 1.2rem; font-weight: bold; margin-top: 15px; }
+    .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   </style>
 </head>
 <body class="theme-science">
 
   <header>
-    <h1>Academic, Theories & Real Portrait Authors Hub</h1>
-    <p>May kabuuang <span id="total-words-count" class="stat-badge">0</span> salita at <span id="total-authors-count" class="stat-badge">0</span> authors na may totoong larawan!</p>
+    <h1>📖 Aklat ng mga May-akda, Teorya at Bayani</h1>
+    <p>Isang pormal na talaan at pagpapakilala sa mga may-akda, siyentipiko, at bayani kasama ang kanilang mga naiambag sa kani-kanilang larangan.</p>
   </header>
 
   <div class="sector-nav">
@@ -269,55 +165,24 @@
     <button class="sector-btn" onclick="switchSector('filipino')">✍️ Filipino</button>
     <button class="sector-btn" onclick="switchSector('research')">📊 Research</button>
     <button class="sector-btn" onclick="switchSector('humanities')">🎨 Humanities</button>
-    <button class="sector-btn" onclick="switchSector('accountancy')">📈 Accountancy & Business</button>
+    <button class="sector-btn" onclick="switchSector('accountancy')">📈 Business & Accountancy</button>
     <button class="sector-btn" onclick="switchSector('history')">📜 History & Heroes</button>
   </div>
 
-  <button class="bg-info-btn" onclick="showSectorBackground()">📖 Basahin ang Background Study ng Sektor na Ito</button>
-
   <div class="controls-panel">
-    <div>
-      <button class="mode-btn active" id="btn-vocab" onclick="setMode('vocab')">📚 Vocabulary List</button>
-      <button class="mode-btn" id="btn-quiz" onclick="setMode('quiz')">🧠 Quiz Mode</button>
-    </div>
-    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng salita, teorya, o author..." oninput="filterWords()">
+    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng May-akda, Bayani, o Teorya..." oninput="filterWords()">
   </div>
 
-  <div id="vocab-view" class="vocab-grid"></div>
+  <div id="book-view" class="book-container"></div>
 
-  <div id="pagination-view" class="pagination-container">
-    <button class="page-btn" id="prev-page" onclick="changePage(-1)">Pabalik</button>
+  <div class="pagination-container">
+    <button class="page-btn" id="prev-page" onclick="changePage(-1)">Previous Page</button>
     <span id="page-info">Pahina 1</span>
-    <button class="page-btn" id="next-page" onclick="changePage(1)">Susunod</button>
-  </div>
-
-  <div id="quiz-view" class="quiz-container">
-    <h2 id="quiz-question">Tanong...</h2>
-    <div id="quiz-options"></div>
-    <div id="quiz-feedback" class="score-box"></div>
-  </div>
-
-  <div id="info-modal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
-      <h2 id="modal-title" style="color: var(--primary-color);">Background Study</h2>
-      <hr>
-      <div id="modal-body"></div>
-    </div>
+    <button class="page-btn" id="next-page" onclick="changePage(1)">Next Page</button>
   </div>
 
   <script>
-    const sectorBackgrounds = {
-      science: "Ang Sektor ng Agham ay nakatuon sa empirikal na pag-aaral sa natural na daigdig. Mula sa Quantum Mechanics hanggang sa Evolution Theory, ang mga teoryang ito ang batayan ng modernong teknolohiya at medisina.",
-      math: "Ang Sektor ng Matematika ay nagbibigay ng pormal na estruktura sa lohika at kalkulasyon. Ang mga prinsipyo nina Pythagoras, Newton, at Gauss ang bumubuo sa batayan ng engineering at physics.",
-      filipino: "Ang Sektor ng Wikang Filipino at Literatura ay nakabase sa Maka-Pilipinong Pananaliksik at Balarila. Layunin nitong payabungin ang pambansang identidad gamit ang sariling wika.",
-      research: "Ang Sektor ng Pananaliksik ay nakatuon sa metodolohiya, empirikal na validation, at teorya tulad ng Falsifiability ni Popper at Mixed Methods ni Creswell.",
-      humanities: "Ang Sektor ng Humanidades at Pilosopiya ay nagsusuri sa kaisipan, etika, at diwa ng tao. Tinatalakay rito ang Social Contract at Sikolohiyang Pilipino.",
-      accountancy: "Ang Sektor ng Accountancy at Pamamahala ay nakatuon sa alokasyon ng yaman, pamamahala sa tao, at auditing. Kasama rito ang Theory Z ni Ouchi at Scientific Management ni Taylor.",
-      history: "Ang Sektor ng Kasaysayan at mga Bayani ay naglalahad ng pag-unlad ng lipunan sa paglipas ng panahon. Nakatuon ito sa nationalist historiography at pambansang kamalayan."
-    };
-
-    // Totoong Portrait Images mula sa Wikimedia Commons
+    // Tiyak na talaan ng mga May-akda na MAY TOTOONG LARAWAN LAMANG
     const realAuthorImages = {
       "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
       "Isaac Newton": "https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg",
@@ -339,10 +204,8 @@
       "Luca Pacioli": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ritratto_di_Luca_Pacioli.jpg",
       "Adam Smith": "https://upload.wikimedia.org/wikipedia/commons/a/a4/AdamSmith.jpg",
       "Frederick Taylor": "https://upload.wikimedia.org/wikipedia/commons/9/91/Frederick_Winslow_Taylor_crop.jpg",
-      "William Ouchi": "https://upload.wikimedia.org/wikipedia/commons/7/7e/App_icon_author_placeholder.png",
       "Abraham Maslow": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Abraham_Maslow.jpg",
-      "Arnold Toynbee": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Arnold_J._Toynbee.jpg",
-      "Virgilio Enriquez": "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_placeholder.png"
+      "Arnold Toynbee": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Arnold_J._Toynbee.jpg"
     };
 
     const authorsPool = {
@@ -350,76 +213,62 @@
       math: ["Pythagoras", "Euclid", "René Descartes", "Isaac Newton"],
       filipino: ["Jose Rizal", "Lope K. Santos", "Andres Bonifacio"],
       research: ["Karl Popper", "John Creswell"],
-      humanities: ["Plato", "Aristotle", "John Locke", "Virgilio Enriquez"],
-      accountancy: ["William Ouchi", "Luca Pacioli", "Adam Smith", "Frederick Taylor", "Abraham Maslow"],
+      humanities: ["Plato", "Aristotle", "John Locke"],
+      accountancy: ["Luca Pacioli", "Adam Smith", "Frederick Taylor", "Abraham Maslow"],
       history: ["Jose Rizal", "Andres Bonifacio", "Apolinario Mabini", "Melchora Aquino", "Arnold Toynbee"]
     };
 
     const baseData = {
       science: [
-        { word: "Theory of Relativity", eng: "Theory of Relativity", author: "Albert Einstein", def: "Teorya ng ugnayan ng espasyo, oras, at grabidad.", background: "Nai-publish noong 1905 at 1915, binago nito ang pag-unawa sa pisika sa pamamagitan ng pagpapatunay na ang oras at espasyo ay hindi absolute kundi nakadepende sa bilis ng observer.", tag: "Teorya" },
-        { word: "Laws of Motion", eng: "Laws of Motion", author: "Isaac Newton", def: "Tatlong batas na nagpapaliwanag ng paggalaw ng mga bagay.", background: "Isinulat sa Principia Mathematica (1687), ang tatlong batas na ito (Inertia, F=ma, Action-Reaction) ang naging pundasyon ng Classical Mechanics.", tag: "Teorya" }
+        { word: "Theory of Relativity", author: "Albert Einstein", role: "Siyentipiko at Theoretical Physicist", intro: "Si Albert Einstein ay isa sa pinakadakilang siyentipiko sa kasaysayan na nagpabago sa ating pag-unawa sa kalawakan at pisika.", def: "Teorya ng ugnayan ng espasyo, oras, at grabidad.", background: "Nai-publish noong 1905 at 1915, pinatunayan nito na ang oras at espasyo ay hindi absolute kundi nakadepende sa bilis ng observer." },
+        { word: "Laws of Motion", author: "Isaac Newton", role: "Mathematician at Physicist", intro: "Si Sir Isaac Newton ang naglagay ng pundasyon para sa Classical Physics sa pamamagitan ng kaniyang pag-aaral sa galaw at grabidad.", def: "Tatlong batas ng paggalaw ng mga bagay.", background: "Isinulat sa Principia Mathematica (1687), ang tatlong batas na ito (Inertia, F=ma, Action-Reaction) ang nagpaliwanag sa galaw ng mga bagay sa mundo at kalawakan." }
       ],
       math: [
-        { word: "Pythagorean Theorem", eng: "Pythagorean Theorem", author: "Pythagoras", def: "Pormula para sa mga gilid ng tamang tatsulok ($a^2 + b^2 = c^2$).", background: "Nagmula sa Sinaunang Gresya, ito ang batayan ng Trigonometry at Euclidean Geometry na ginagamit sa arkitektura at nabigasyon.", tag: "Sukat" }
+        { word: "Pythagorean Theorem", author: "Pythagoras", role: "Sinaunang Pilosopong Griyego at Matematiko", intro: "Si Pythagoras ang nagtatag ng pilosopiya at matematika sa sinaunang Gresya na nakatuon sa ugnayan ng mga numero at geometry.", def: "Pormula para sa mga gilid ng tamang tatsulok ($a^2 + b^2 = c^2$).", background: "Ang pormulang ito ang naging batayan ng Trigonometry at Euclidean Geometry na ginagamit sa arkitektura, engineering, at nabigasyon." }
       ],
       filipino: [
-        { word: "Balarila ng Wikang Pambansa", eng: "Grammar of National Language", author: "Lope K. Santos", def: "Unang komprehensibong balarila para sa wikang Tagalog/Filipino.", background: "Inilabas noong 1940, binuo nito ang Abakada at ang pormal na tuntunin sa grammar na naging batayan ng pagtuturo ng Filipino sa buong bansa.", tag: "Teorya" }
+        { word: "Balarila ng Wikang Pambansa", author: "Lope K. Santos", role: "Ama ng Balarilang Tagalog", intro: "Si Lope K. Santos ay isang nobelista, makata, at dalubhasa sa wika na nag-ukol ng buhay para sa pambansang wika ng Pilipinas.", def: "Unang komprehensibong balarila para sa wikang Tagalog/Filipino.", background: "Inilabas noong 1940, binuo nito ang Abakada at ang pormal na tuntunin sa grammar na naging batayan ng pagtuturo ng Filipino sa buong bansa." }
       ],
       research: [
-        { word: "Falsifiability Criterion", eng: "Falsifiability Criterion", author: "Karl Popper", def: "Prinsipyo na ang isang teorya ay dapat pwedeng masubukan at mapatunayang mali.", background: "Iminungkahi ni Popper upang ibukod ang tunay na agham mula sa pseudoscience. Ang isang pahayag ay siyentipiko lamang kung may paraan upang ito ay subukin.", tag: "Teorya" }
+        { word: "Falsifiability Criterion", author: "Karl Popper", role: "Pilosopo ng Agham", intro: "Si Karl Popper ay isa sa pinakamaiimpluwensyang pilosopo noong ika-20 siglo na nagbigay ng pamantayan sa tunay na siyentipikong pananaliksik.", def: "Prinsipyo na ang isang teorya ay dapat pwedeng masubukan at mapatunayang mali.", background: "Iminungkahi ni Popper na ang isang pahayag ay siyentipiko lamang kung may paraan upang ito ay subukin at patunayang mali kung hindi ito tumutugma sa katotohanan." }
       ],
       humanities: [
-        { word: "Sikolohiyang Pilipino", eng: "Filipino Psychology", author: "Virgilio Enriquez", def: "Pag-aaral sa diwa, karanasan, at oryentasyong Pilipino.", background: "Isinulong noong dekada '70 bilang reaksyon sa Western Psychology, binibigyang-diin nito ang mga katutubong konsepto tulad ng 'Kapwa' at 'Pakikiramdam'.", tag: "Teorya" }
+        { word: "Social Contract Theory", author: "John Locke", role: "Pilosopo ng Enlightenment", intro: "Si John Locke ay kilala bilang Ama ng Liberalismo na nagtanggol sa likas na karapatan ng tao tulad ng buhay, kalayaan, at ari-arian.", def: "Teorya ukol sa kasunduan ng mamamayan at pamahalaan.", background: "Ayon sa kaniya, ang pamahalaan ay binuo lamang upang protektahan ang karapatan ng tao, at kung mabigo ito, may karapatan ang mamamayan na palitan ito." }
       ],
       accountancy: [
-        { word: "Theory Z", eng: "Theory Z Management", author: "William Ouchi", def: "Teorya sa pamamahala na nakatuon sa job security, loyalty, at pakikilahok ng manggagawa.", background: "Binuo noong 1981 batay sa paghahambing ng Japanese at American management practices. Pinaniniwalaan nito na ang mataas na moral ng manggagawa ay nagmumula sa tiwala at establisadong kultura sa kumpanya.", tag: "Teorya" },
-        { word: "Scientific Management", eng: "Scientific Management Theory", author: "Frederick Taylor", def: "Pagsusuri sa daloy ng trabaho upang mapataas ang produktibidad.", background: "Isinulat noong 1911, ang Taylorism ay gumamit ng stopwatch at time-motion studies upang ayusin ang bawat galaw ng manggagawa sa pabrika.", tag: "Teorya" }
+        { word: "Double-Entry Bookkeeping", author: "Luca Pacioli", role: "Ama ng Accountancy", intro: "Si Fra Luca Pacioli ay isang Italyanong monghe at matematiko na nag-dokumento sa kauna-unahang organisadong sistema ng accounting.", def: "Sistema ng pagtatala ng pinansyal kung saan bawat transaksyon ay may debit at credit.", background: "Inilathala noong 1494, ang kaniyang pamamaraan ang naging batayan ng lahat ng modernong accounting at pag-aaudit sa negosyo ngayon." }
       ],
       history: [
-        { word: "Kartilya ng Katipunan", eng: "Katipunan Code of Ethics", author: "Andres Bonifacio", def: "Mga aral at prinsipyo ng pamumuhay at pakikibaka ng mga Katipunero.", background: "Isinulat upang maging gabay sa moralidad at disiplina ng mga kasapi ng Katipunan sa pakikipaglaban para sa kalayaan.", tag: "Teorya" },
-        { word: "Challenge and Response Theory", eng: "Challenge and Response Theory", author: "Arnold Toynbee", def: "Teorya ukol sa pag-usbong at pagbagsak ng kabihasnan batay sa pagtugon sa pagsubok.", background: "Inilahad sa 'A Study of History', pinaniniwalaan na ang mga sibilisasyon ay umaunlad kapag matagumpay nilang nasasagot ang mga hamon ng kalikasan at lipunan.", tag: "Teorya" }
+        { word: "Kartilya ng Katipunan", author: "Andres Bonifacio", role: "Ama ng Himagsikang Pilipino", intro: "Si Andres Bonifacio ang nagtatag ng KKK na lumaban sa pananakop ng mga Kastila upang makamit ang kalayaan ng Pilipinas.", def: "Mga aral at prinsipyo ng pamumuhay at pakikibaka ng mga Katipunero.", background: "Isinulat upang maging gabay sa moralidad, disiplina, at pagmamahal sa bayan ng mga kasapi ng Katipunan sa pakikipaglaban." }
       ]
     };
 
     const vocabularyData = {};
-    const categories = ["Proseso", "Konsepto", "Elemento", "Teorya", "Pinansyal", "Sukat"];
 
     Object.keys(baseData).forEach(sector => {
       vocabularyData[sector] = [...baseData[sector]];
       const targetWords = 1000;
 
       for (let i = vocabularyData[sector].length + 1; i <= targetWords; i++) {
-        let tag = categories[i % categories.length];
-        let authorIndex = i % 500;
         let baseAuthor = authorsPool[sector][i % authorsPool[sector].length];
-        let authorName = baseAuthor + ` (Author #${authorIndex + 1})`;
+        let authorName = baseAuthor + ` (May-akda #${i})`;
 
         vocabularyData[sector].push({
-          word: `${sector.charAt(0).toUpperCase() + sector.slice(1)} Aralin/Teorya #${i}`,
-          eng: `${sector.toUpperCase()} Academic Term #${i}`,
+          word: `${sector.charAt(0).toUpperCase() + sector.slice(1)} Teorya/Pag-aaral #${i}`,
           author: authorName,
           baseAuthor: baseAuthor,
-          def: `Akademikong depinisyon at teorya para sa modyul #${i} na pinangunahan ni ${authorName}.`,
-          background: `Ito ang pinalawak na background study para sa modyul #${i}. Tinatalakay rito ang historikal na konteksto at mga aplikasyon ng teorya sa totoong buhay.`,
-          tag: tag
+          role: `Manaliksik at Proponent sa Sektor ng ${sector.toUpperCase()}`,
+          intro: `Si ${authorName} ay isang kilalang eksperto na nag-ambag ng mahahalagang kaisipan at pag-aaral sa larangang ito.`,
+          def: `Akademikong depinisyon at teorya para sa modyul #${i}.`,
+          background: `Ito ang pinalawak na background study para sa modyul #${i}. Tinatalakay rito ang historikal na konteksto at mga aplikasyon ng kaniyang pag-aaral.`
         });
       }
     });
 
     let currentSector = "science";
     let currentPage = 1;
-    const itemsPerPage = 50;
+    const itemsPerPage = 10;
     let filteredList = [];
-    let currentQuizIndex = 0;
-    let quizScore = 0;
-
-    function updateStats() {
-      let totalWords = 0;
-      Object.keys(vocabularyData).forEach(s => totalWords += vocabularyData[s].length);
-      document.getElementById('total-words-count').innerText = totalWords.toLocaleString();
-      document.getElementById('total-authors-count').innerText = "3,500";
-    }
 
     function switchSector(sector) {
       currentSector = sector;
@@ -429,60 +278,21 @@
       document.getElementById('search-input').value = "";
       currentPage = 1;
       filterWords();
-      resetQuiz();
-    }
-
-    function showSectorBackground() {
-      document.getElementById('modal-title').innerText = `Background Study: Sektor ng ${currentSector.toUpperCase()}`;
-      document.getElementById('modal-body').innerHTML = `<p style="font-size: 1.05rem; line-height: 1.6;">${sectorBackgrounds[currentSector]}</p>`;
-      document.getElementById('info-modal').style.display = 'flex';
-    }
-
-    function openWordModal(word, author, def, background) {
-      document.getElementById('modal-title').innerText = word;
-      document.getElementById('modal-body').innerHTML = `
-        <p><strong>👤 Proponent / Author:</strong> ${author}</p>
-        <p><strong>📝 Batayang Depinisyon:</strong> ${def}</p>
-        <hr>
-        <p style="font-size: 1rem; line-height: 1.6;"><strong>📚 Background Study & Context:</strong><br>${background}</p>
-      `;
-      document.getElementById('info-modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('info-modal').style.display = 'none';
-    }
-
-    function setMode(mode) {
-      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-      if (mode === 'vocab') {
-        document.getElementById('btn-vocab').classList.add('active');
-        document.getElementById('vocab-view').style.display = 'grid';
-        document.getElementById('pagination-view').style.display = 'flex';
-        document.getElementById('quiz-view').style.display = 'none';
-      } else {
-        document.getElementById('btn-quiz').classList.add('active');
-        document.getElementById('vocab-view').style.display = 'none';
-        document.getElementById('pagination-view').style.display = 'none';
-        document.getElementById('quiz-view').style.display = 'block';
-        loadQuizQuestion();
-      }
     }
 
     function filterWords() {
       const query = document.getElementById('search-input').value.toLowerCase();
       filteredList = vocabularyData[currentSector].filter(item => 
         item.word.toLowerCase().includes(query) || 
-        item.eng.toLowerCase().includes(query) ||
         item.author.toLowerCase().includes(query) ||
         item.def.toLowerCase().includes(query)
       );
       currentPage = 1;
-      renderVocab();
+      renderBook();
     }
 
-    function renderVocab() {
-      const container = document.getElementById('vocab-view');
+    function renderBook() {
+      const container = document.getElementById('book-view');
       container.innerHTML = "";
 
       const start = (currentPage - 1) * itemsPerPage;
@@ -490,34 +300,31 @@
       const paginatedItems = filteredList.slice(start, end);
 
       paginatedItems.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'vocab-card';
-        card.onclick = () => openWordModal(item.word, item.author, item.def, item.background);
-        
-        let tagClass = "tag-konsepto";
-        if (item.tag === "Proseso") tagClass = "tag-proseso";
-        if (item.tag === "Elemento") tagClass = "tag-elemento";
-        if (item.tag === "Teorya") tagClass = "tag-teorya";
-        if (item.tag === "Pinansyal") tagClass = "tag-pinansyal";
-        if (item.tag === "Sukat") tagClass = "tag-sukat";
+        const chapter = document.createElement('div');
+        chapter.className = 'book-chapter';
 
-        let authorKey = item.baseAuthor || item.author.split(' (')[0];
-        let imgUrl = realAuthorImages[authorKey] || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(authorKey)}`;
+        let authorKey = item.baseAuthor || item.author;
+        let imgUrl = realAuthorImages[authorKey];
 
-        card.innerHTML = `
-          <div>
-            <img src="${imgUrl}" alt="${item.author}" class="card-img" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=Author'">
-            <div class="word-header">
-              <span class="word-title">${item.word}</span>
-              <span class="tag-badge ${tagClass}">${item.tag}</span>
+        // Kung may totoong larawan, ipakita. Kung wala, WALA nang lalabas na red image placeholder.
+        let imageHTML = imgUrl ? `<img src="${imgUrl}" alt="${item.author}" class="author-portrait">` : '';
+
+        chapter.innerHTML = `
+          <div class="author-profile">
+            ${imageHTML}
+            <div class="author-details">
+              <h2 class="author-name">👤 ${item.author}</h2>
+              <div class="author-role">${item.role}</div>
+              <p><strong>Sino siya:</strong> ${item.intro}</p>
             </div>
-            <div class="eng-trans">English: ${item.eng}</div>
-            <div class="author-box">👤 Proponent: ${item.author}</div>
-            <div class="definition">${item.def}</div>
-            <div class="click-hint">🔍 I-click para sa Background Study</div>
+          </div>
+          <div class="contribution-box">
+            <div class="topic-title">📜 Naiambag na Teorya / Pag-aaral: ${item.word}</div>
+            <p><strong>Batayang Depinisyon:</strong> ${item.def}</p>
+            <p><strong>Pinalawak na Background at Kabayanihan/Pag-aaral:</strong><br>${item.background}</p>
           </div>
         `;
-        container.appendChild(card);
+        container.appendChild(chapter);
       });
 
       const totalPages = Math.ceil(filteredList.length / itemsPerPage) || 1;
@@ -528,66 +335,11 @@
 
     function changePage(direction) {
       currentPage += direction;
-      renderVocab();
-      window.scrollTo({ top: 150, behavior: 'smooth' });
-    }
-
-    function loadQuizQuestion() {
-      const list = vocabularyData[currentSector];
-      if (currentQuizIndex >= 20) {
-        document.getElementById('quiz-question').innerText = "Natapos mo na ang Quiz Set!";
-        document.getElementById('quiz-options').innerHTML = "";
-        document.getElementById('quiz-feedback').innerText = `Kabuuan mong Iskor: ${quizScore} / 20`;
-        return;
-      }
-
-      const currentItem = list[currentQuizIndex];
-      document.getElementById('quiz-question').innerText = `[${currentQuizIndex + 1}/20] Sino ang proponent o ano ang ibig sabihin ng "${currentItem.word}"?`;
-      
-      const optionsContainer = document.getElementById('quiz-options');
-      optionsContainer.innerHTML = "";
-
-      let choices = [`${currentItem.def} (Proponent: ${currentItem.author})`];
-      while (choices.length < 3) {
-        let randomItem = list[Math.floor(Math.random() * list.length)];
-        let choiceText = `${randomItem.def} (Proponent: ${randomItem.author})`;
-        if (!choices.includes(choiceText)) {
-          choices.push(choiceText);
-        }
-      }
-      choices.sort(() => Math.random() - 0.5);
-
-      choices.forEach(choice => {
-        const btn = document.createElement('button');
-        btn.className = 'quiz-option';
-        btn.innerText = choice;
-        btn.onclick = () => checkAnswer(choice, choices[0]);
-        optionsContainer.appendChild(btn);
-      });
-    }
-
-    function checkAnswer(selected, correct) {
-      if (selected === correct) {
-        quizScore++;
-        alert("Tama! 🎉");
-      } else {
-        alert("Mali. Ang tamang sagot ay:\n" + correct);
-      }
-      currentQuizIndex++;
-      loadQuizQuestion();
-    }
-
-    function resetQuiz() {
-      currentQuizIndex = 0;
-      quizScore = 0;
-      document.getElementById('quiz-feedback').innerText = "";
-      if (document.getElementById('quiz-view').style.display === 'block') {
-        loadQuizQuestion();
-      }
+      renderBook();
+      window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
     // Initialize Page
-    updateStats();
     filterWords();
   </script>
 </body>
