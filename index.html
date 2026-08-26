@@ -42,7 +42,6 @@
     h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2.2rem; }
     .subtitle { font-style: italic; color: #555; }
 
-    /* MODE SWITCHER (HIWALAY NA BROCHURE) */
     .mode-switch-container {
       display: flex;
       justify-content: center;
@@ -68,7 +67,6 @@
       color: #fff;
     }
 
-    /* SECTOR NAVIGATION */
     .sector-nav {
       display: flex;
       flex-wrap: wrap;
@@ -127,7 +125,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* AUTHORS BROCHURE STYLES */
     .author-profile {
       display: flex;
       gap: 20px;
@@ -146,7 +143,6 @@
     .author-details { flex-grow: 1; }
     .author-name { font-size: 1.6rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
 
-    /* HIGHLIGHT FONT PARA SA GINAWA / TEORYA / KABAYANIHAN */
     .highlight-work {
       background-color: #fff3e0;
       color: var(--highlight-color);
@@ -159,9 +155,7 @@
       margin: 8px 0;
     }
 
-    /* VOCABULARY BROCHURE STYLES */
     .word-title { font-size: 1.6rem; color: var(--primary-color); margin: 0 0 10px 0; font-weight: bold; }
-    .word-category { font-style: italic; color: #666; font-size: 0.95rem; }
 
     .pagination-container {
       display: flex;
@@ -184,26 +178,24 @@
     .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   </style>
 </head>
-<body class="theme-science">
+<body class="theme-accountancy">
 
   <header>
-    <h1>📖 Sistema ng hiwalay na Brochure</h1>
+    <h1>📖 Sistema ng Hiwalay na Brochure</h1>
     <p class="subtitle">Pumili sa pagitan ng Brochure ng mga May-akda o Brochure ng mga Bokabularyo sa bawat Asignatura.</p>
   </header>
 
-  <!-- PUMILI NG BROCHURE NA NAIS TINGNAN -->
   <div class="mode-switch-container">
-    <button class="mode-btn active" id="btn-mode-authors" onclick="switchMode('authors')">👤 Brochure ng mga May-Akda at Bayani</button>
-    <button class="mode-btn" id="btn-mode-vocab" onclick="switchMode('vocab')">📚 Brochure ng mga Bukabolaryo at Salita</button>
+    <button class="mode-btn" id="btn-mode-authors" onclick="switchMode('authors')">👤 Brochure ng mga May-Akda at Bayani</button>
+    <button class="mode-btn active" id="btn-mode-vocab" onclick="switchMode('vocab')">📚 Brochure ng mga Bukabolaryo at Salita</button>
   </div>
 
-  <!-- SEKTOR NG MGA ASIGNATURA -->
   <div class="sector-nav">
-    <button class="sector-btn active" onclick="switchSector('science')">🔬 Science</button>
+    <button class="sector-btn active" onclick="switchSector('accountancy')">📈 Accountancy</button>
+    <button class="sector-btn" onclick="switchSector('science')">🔬 Science</button>
     <button class="sector-btn" onclick="switchSector('math')">📐 Mathematics</button>
     <button class="sector-btn" onclick="switchSector('research')">📊 Research</button>
     <button class="sector-btn" onclick="switchSector('filipino')">✍️ Filipino</button>
-    <button class="sector-btn" onclick="switchSector('accountancy')">📈 Accountancy</button>
     <button class="sector-btn" onclick="switchSector('humanities')">🎨 Humanities</button>
     <button class="sector-btn" onclick="switchSector('history')">📜 History</button>
   </div>
@@ -221,90 +213,84 @@
   </div>
 
   <script>
-    // Tiyak na larawan para sa may totoong litrato lamang
     const realAuthorImages = {
       "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
       "Isaac Newton": "https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg",
-      "Charles Darwin": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Charles_Darwin_seated_crop.jpg",
-      "Galileo Galilei": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Justus_Sustermans_-_Portrait_of_Galileo_Galilei%2C_1636.jpg",
       "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marie_Curie_c._1920s.jpg",
       "Pythagoras": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kapital_Pythagoras_Louvre_G163.jpg",
       "Euclid": "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg",
-      "René Descartes": "https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
       "Jose Rizal": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Jose_Rizal_full_length.jpg",
       "Andres Bonifacio": "https://upload.wikimedia.org/wikipedia/commons/2/23/Andres_Bonifacio_studio_portrait.jpg",
       "Apolinario Mabini": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Apolinario_Mabini_seated.jpg",
-      "Melchora Aquino": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Melchora_Aquino_portrait.jpg",
       "Lope K. Santos": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lope_K._Santos.jpg",
       "Karl Popper": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
       "John Locke": "https://upload.wikimedia.org/wikipedia/commons/b/b8/John_Locke_by_Herman_Verelst.jpg",
-      "Plato": "https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg",
-      "Aristotle": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg",
-      "Luca Pacioli": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ritratto_di_Luca_Pacioli.jpg",
-      "Adam Smith": "https://upload.wikimedia.org/wikipedia/commons/a/a4/AdamSmith.jpg"
+      "Luca Pacioli": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ritratto_di_Luca_Pacioli.jpg"
     };
 
-    // 1. DATA NG MGA AUTHOR/BAYANI LAMANG (WALANG BUKABOLARYONG SALITA)
     const authorsDatabase = {
+      accountancy: [
+        { name: "Luca Pacioli", role: "Ama ng Accountancy", bio: "Isang Italyanong Franciscan friar at matematiko na nagdokumento sa kauna-unahang organisadong sistema ng bookkeeping sa daigdig.", contribution: "Double-Entry Bookkeeping System (Summa de Arithmetica, 1494)" }
+      ],
       science: [
-        { name: "Albert Einstein", role: "Theoretical Physicist", bio: "Isinilang sa Germany noong 1879. Isa sa pinakadakilang siyentipiko sa kasaysayan na nagpabago sa ating pag-unawa sa kalawakan, oras, at enerhiya.", contribution: "Theory of Relativity (E=mc²) at Photoelectric Effect" },
-        { name: "Isaac Newton", role: "Mathematician at Physicist", bio: "Isang Ingles na siyentipiko na nagtala ng mga batayang batas ng pisika at nakatuklas sa kalikasan ng grabidad at liwanag.", contribution: "Tatlong Batas ng Paggalaw (Laws of Motion) at Law of Universal Gravitation" },
-        { name: "Marie Curie", role: "Physicist at Chemist", bio: "Unang babaeng nanalo ng Nobel Prize at natatanging tao na nanalo sa dalawang magkaibang larangan ng agham (Physics at Chemistry).", contribution: "Pagtuklas sa Radioactivity at mga Elementong Polonium at Radium" }
+        { name: "Albert Einstein", role: "Theoretical Physicist", bio: "Siyentipikong nagpabago sa larangan ng pisika sa pamamagitan ng kaniyang teorya ng relatibidad.", contribution: "Theory of Relativity (E=mc²) at Photoelectric Effect" },
+        { name: "Isaac Newton", role: "Mathematician at Physicist", bio: "Nagtatag ng mga batayang batas ng pisika at pormulasyon ng grabidad.", contribution: "Laws of Motion at Law of Universal Gravitation" }
       ],
       math: [
-        { name: "Pythagoras", role: "Sinaunang Matematiko at Pilosopo", bio: "Griyegong matematiko na nagtatag ng paaralang Pythagorean. Naniniwala siya na ang matematika ang batayan ng lahat ng bagay sa mundo.", contribution: "Pythagorean Theorem ($a^2 + b^2 = c^2$)" },
-        { name: "Euclid", role: "Ama ng Geometry", bio: "Sinaunang matematikong Griyego mula sa Alexandria na nagsulat ng librong 'Elements' na naging batayan ng pagtuturo ng matematika sa loob ng libo-libong taon.", contribution: "Euclidean Geometry at Axiomatic Method" }
+        { name: "Pythagoras", role: "Sinaunang Matematiko", bio: "Griyegong pilosopo na nagtatag ng mga tuntunin sa heometriya.", contribution: "Pythagorean Theorem ($a^2 + b^2 = c^2$)" }
       ],
       research: [
-        { name: "Karl Popper", role: "Pilosopo ng Agham", bio: "Austrian-British na pilosopo na nagbigay ng malinaw na pamantayan kung ano ang tunay na siyentipikong metodolohiya.", contribution: "Falsifiability Criterion sa Pananaliksik" }
+        { name: "Karl Popper", role: "Pilosopo ng Agham", bio: "Nagbigay ng pamantayan ng siyentipikong empirikong pananaliksik.", contribution: "Falsifiability Criterion" }
       ],
       filipino: [
-        { name: "Lope K. Santos", role: "Ama ng Balarilang Tagalog", bio: "Tanyag na nobelista, makata, at dalubhasa sa wika mula sa Rizal na nag-ukol ng buhay para sa pambansang wika ng Pilipinas.", contribution: "Pagsulat ng Balarila ng Wikang Pambansa at Pagbuo ng Abakada (1940)" },
-        { name: "Jose Rizal", role: "Pambansang Bayani at Manunulat", bio: "Isang doktor, dalubwika, at manunulat na gumamit ng kaniyang panulat upang magmulat sa kaisipan ng mamamayang Pilipino.", contribution: "Pagsulat ng Noli Me Tangere at El Filibusterismo" }
-      ],
-      accountancy: [
-        { name: "Luca Pacioli", role: "Ama ng Accountancy", bio: "Isang Italyanong Franciscan friar at matematiko na matalik na kaibigan ni Leonardo da Vinci.", contribution: "Paglikha at Pag-dokumento ng Double-Entry Bookkeeping System (1494)" }
+        { name: "Lope K. Santos", role: "Ama ng Balarila", bio: "Makata at dalubwika na bumuo ng kauna-unahang pormal na gramatikang Tagalog.", contribution: "Balarila ng Wikang Pambansa at Abakada" }
       ],
       humanities: [
-        { name: "John Locke", role: "Pilosopo ng Enlightenment", bio: "Ingles na pilosopo na nagtatag ng empiricism at nakaimpluwensya sa modernong kaisipang pampolitika at karapatang pantao.", contribution: "Social Contract Theory at Konsepto ng Natural Rights (Buhay, Kalayaan, Ari-arian)" }
+        { name: "John Locke", role: "Pilosopo", bio: "Ama ng Liberalismo at nagtatag ng teorya ng pantay na karapatan.", contribution: "Social Contract Theory at Natural Rights" }
       ],
       history: [
-        { name: "Andres Bonifacio", role: "Supremo ng Katipunan", bio: "Dakilang rebolusyonaryong Pilipino mula sa Tondo na nagtatag ng KKK upang lumaban para sa kalayaan laban sa pananakop ng Espanya.", contribution: "Pagtatag ng KKK at Pagsulat ng Kartilya ng Katipunan" },
-        { name: "Apolinario Mabini", role: "Utak ng Rebolusyon", bio: "Kilala bilang Dakilang Paralitiko na naglingkod bilang pangunahing tagapayo sa pampolitikang estruktura ng Unang Republika ng Pilipinas.", contribution: "Pagsulat ng La Revolucion Filipina at Constitutional Program" }
+        { name: "Andres Bonifacio", role: "Supremo ng Katipunan", bio: "Pinuno ng rebolusyong Pilipino laban sa pananakop ng Espanya.", contribution: "Pagtatag ng KKK at Pagsulat ng Kartilya" }
       ]
     };
 
-    // 2. DATA NG MGA BUKABOLARYO AT SALITA LAMANG (HIWALAY SA AUTHOR)
+    // MGA TERMINOLOHIYA SA ACCOUNTING
     const vocabularyDatabase = {
+      accountancy: [
+        { word: "Pagtutuos (Accountancy / Accounting)", def: "Ang sining ng pagtatala, pag-uuri, at pagbubuod sa paraang may kabuluhan at sa halaga ng salapi, ng mga transaksyon at kaganapan na may katangiang pinansyal.", usage: "Pangunahing disiplina at kurso sa negosyo." },
+        { word: "Akwenta / Kuwenta (Account)", def: "Isang pormal na talaan ng mga transaksyong pinansyal na may kaugnayan sa isang partikular na asset, liability, equity, kita, o gastusin.", usage: "Inilalagay sa General Ledger." },
+        { word: "Tasa / Pagtatasa (Assessment / Valuation)", def: "Ang proseso ng pagtatakda ng halagang pinansyal o kaukulang halaga ng isang ari-arian o pananagutan.", usage: "Ginagamit sa pagtutuos ng buwis at audit." },
+        { word: "Puhunan (Capital / Equity)", def: "Ang kabuuang halaga ng salapi o ari-arian na inilagay ng may-ari sa negosyo.", usage: "Makikita sa Statement of Changes in Equity." },
+        { word: "Ari-arian (Assets)", def: "Lahat ng pangkabuhayang kayamanan o resources na pagmamay-ari ng isang kumpanya o indibidwal.", usage: "Bahagi ng Accounting Equation (Assets = Liabilities + Equity)." },
+        { word: "Pinagkakautangan (Creditor)", def: "Isang tao, bangko, o institusyon kung kanino may utang na salapi o serbisyo ang negosyo.", usage: "Pinagmumulan ng Accounts Payable." },
+        { word: "Nagkakautang (Debtor)", def: "Isang tao o entidad na may umiiral na utang o obligasyong pinansyal sa negosyo.", usage: "Pinagmumulan ng Accounts Receivable." },
+        { word: "Kagastusan (Expense)", def: "Ang halaga ng salapi na ginastos sa pagpapatakbo ng negosyo upang makalikha ng kita.", usage: "Binabawas sa Revenue upang makuha ang Net Income." },
+        { word: "Pautang / Utang (Liability)", def: "Mga kasalukuyang obligasyong pinansyal ng kumpanya na nagmula sa mga nagdaang transaksyon.", usage: "Iniuulat sa Balance Sheet." },
+        { word: "Talaarawan ng Pagtutuos (Journal)", def: "Ang aklat ng unang pagtatala kung saan kronolohikong isinusulat ang mga transaksyon.", usage: "Ginagamit sa pamamaraang Journalizing." },
+        { word: "Audit (Pagsusuri ng Kuwenta)", def: "Opisyal na inspeksyon at beripikasyon sa mga rekord at laporan ng pinansyal ng isang organisasyon.", usage: "Ginagawa ng Certified Public Accountant (CPA)." },
+        { word: "Cash Flow (Daloy ng Salapi)", def: "Ang kabuuang halaga ng salapi na pumasok at lumabas sa isang negosyo sa loob ng isang partikular na panahon.", usage: "Iniuulat sa Statement of Cash Flows." },
+        { word: "Depreciation (Pagbaba ng Halaga)", def: "Ang paghahati o pagpataw ng halaga ng isang fixed asset habang ginagamit ito sa paglipas ng panahon.", usage: "Iniuulat bilang gastusin sa Income Statement." },
+        { word: "Net Income (Netong Kita)", def: "Ang natirang kita matapos ibawas ang lahat ng gastusin, buwis, at cost of goods sold mula sa kabuuang benta.", usage: "Tinatawag ding Bottom Line sa Income Statement." }
+      ],
       science: [
-        { word: "Photosynthesis", def: "Proseso kung saan ang mga halaman ay gumagamit ng sikat ng araw upang gumawa ng pagkain mula sa carbon dioxide at tubig.", usage: "Ginagamit sa Biology upang ipaliwanag ang siklo ng enerhiya sa mga halaman." },
-        { word: "Thermodynamics", def: "Sanga ng pisika na nag-aaral sa ugnayan ng init, trabaho, at enerhiya.", usage: "Pangunahing aralin sa Physics at Engineering." }
+        { word: "Photosynthesis", def: "Proseso ng paggawa ng pagkain ng mga halaman gamit ang liwanag ng araw.", usage: "Aralin sa Biology." }
       ],
       math: [
-        { word: "Polynomial", def: "Matematikal na ekspresyon na binubuo ng mga baryabol at coefficient gamit ang adisyon, subtraksyon, at multiplikasyon.", usage: "Ginagamit sa Algebra at Calculus." },
-        { word: "Standard Deviation", def: "Sukat ng dami ng baryasyon o pagkalat ng mga value sa isang hanay ng datos.", usage: "Mahalagang termino sa Statistics." }
+        { word: "Polynomial", def: "Ekspresyong matematikal na binubuo ng mga variable at constant.", usage: "Aralin sa Algebra." }
       ],
       research: [
-        { word: "Qualitative Research", def: "Uri ng pananaliksik na nakatutok sa pag-unawa sa karanasan, opinyon, at damdamin ng tao gamit ang hindi numerikong datos.", usage: "Ginagamit sa Social Sciences at Mapanuring Pag-aaral." },
-        { word: "Hypothesis", def: "Isang pansamantalang hinala o paliwanag na kailangang subukin sa pamamagitan ng eksperimento.", usage: "Batayang bahagi ng Scientific Method." }
+        { word: "Kwalitatibong Pananaliksik", def: "Pananaliksik na nakatuon sa malalim na pagsusuri ng karanasan at salaysay ng tao.", usage: "Aralin sa Research Method." }
       ],
       filipino: [
-        { word: "Mapanuring Pagbasa", def: "Malalim na pagsusuri at pag-unawa sa nilalaman, layunin, at konteksto ng isang teksto.", usage: "Aralin sa Pagbasa at Pagsusuri ng Iba't Ibang Teksto." },
-        { word: "Kakayahang Lingguwistiko", def: "Abilidad ng isang tao na makabuo at makaintindi ng maayos na pangungusap batay sa mga tuntunin ng grammar.", usage: "Gamit sa Komunikasyon at Pananaliksik sa Wika." }
-      ],
-      accountancy: [
-        { word: "Assets", def: "Lahat ng ari-arian o resources na pagmamay-ari ng isang negosyo na may pangkabuhayang halaga.", usage: "Ginagamit sa Balance Sheet at Financial Accounting." },
-        { word: "Liability", def: "Mga obligasyon o utang ng isang negosyo sa ibang partido na kailangang bayaran.", usage: "Batayang termino sa Bookkeeping at Accounting." }
+        { word: "Mapanuring Pagbasa", def: "Pagsusuri ng nilalaman, estruktura, at layunin ng may-akda sa isang teksto.", usage: "Aralin sa Filipino at Literasiya." }
       ],
       humanities: [
-        { word: "Epistemology", def: "Sanga ng pilosopiya na nag-aaral sa pinagmulan, kalikasan, at hangganan ng kaalaman ng tao.", usage: "Aralin sa Pilosopiya at Humanidades." }
+        { word: "Epistemolohiya", def: "Pilosopikong pag-aaral sa pinagmulan at hangganan ng kaalaman ng tao.", usage: "Aralin sa Pilosopiya." }
       ],
       history: [
-        { word: "Sovereignty (Kaprangko / Kasarinlan)", def: "Pinakamataas na kapangyarihan ng isang estado na mamahala sa kaniyang nasasakupan nang walang panghihimasok ng ibang bansa.", usage: "Aralin sa Kasaysayan at Politics." }
+        { word: "Soberanya (Sovereignty)", def: "Ang ganap at kapangyarihang magsarili ng isang bansa.", usage: "Aralin sa Kasaysayan at Politika." }
       ]
     };
 
-    // Punuin ng tig-1000 items bawat sektor para sa dalawang brochure
     const fullAuthors = {};
     const fullVocab = {};
 
@@ -313,9 +299,9 @@
       for (let i = fullAuthors[sec].length + 1; i <= 1000; i++) {
         fullAuthors[sec].push({
           name: `${sec.toUpperCase()} Author #${i}`,
-          role: `Mananaliksik at Proponent sa Sektor ng ${sec.toUpperCase()}`,
-          bio: `Siya ay isang dedikadong eksperto na nag-ukol ng panahon sa pag-aaral at pagpapaunlad ng kaalaman sa asignaturang ${sec.toUpperCase()}.`,
-          contribution: `Teorya at Pag-aaral sa Modyul #${i}`
+          role: `Mananaliksik sa ${sec.toUpperCase()}`,
+          bio: `Isang dalubhasa na nagsagawa ng masusing pag-aaral sa ilalim ng sektor ng ${sec.toUpperCase()}.`,
+          contribution: `Teorya at Modyul #${i}`
         });
       }
     });
@@ -325,15 +311,14 @@
       for (let i = fullVocab[sec].length + 1; i <= 1000; i++) {
         fullVocab[sec].push({
           word: `${sec.toUpperCase()} Termino #${i}`,
-          def: `Tiyak na akademikong depinisyon para sa terminong #${i} sa asignaturang ${sec.toUpperCase()}.`,
-          usage: `Ginagamit bilang batayang salita sa pag-aaral ng Modyul #${i}.`
+          def: `Batayang akademikong depinisyon ng salita sa asignaturang ${sec.toUpperCase()}.`,
+          usage: `Ginagamit sa Modyul #${i}.`
         });
       }
     });
 
-    // SYSTEM VARIABLES
-    let currentMode = "authors"; // 'authors' o 'vocab'
-    let currentSector = "science";
+    let currentMode = "vocab";
+    let currentSector = "accountancy";
     let currentPage = 1;
     const itemsPerPage = 10;
     let filteredList = [];
@@ -386,13 +371,11 @@
       const paginatedItems = filteredList.slice(start, end);
 
       if (currentMode === 'authors') {
-        // BROCHURE NG MGA AUTHOR/BAYANI
         paginatedItems.forEach(item => {
           const card = document.createElement('div');
           card.className = 'book-card';
 
           let imgUrl = realAuthorImages[item.name];
-          // KUNG WALANG TOTOONG LARAWAN, WALA NG ILALAGAY NA MGA PULANG BOX
           let imageHTML = imgUrl ? `<img src="${imgUrl}" alt="${item.name}" class="author-portrait">` : '';
 
           card.innerHTML = `
@@ -410,7 +393,6 @@
           container.appendChild(card);
         });
       } else {
-        // BROCHURE NG MGA BUKABOLARYO AT SALITA
         paginatedItems.forEach(item => {
           const card = document.createElement('div');
           card.className = 'book-card';
@@ -436,7 +418,6 @@
       window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
-    // Pagpapatakbo sa simula
     filterData();
   </script>
 </body>
