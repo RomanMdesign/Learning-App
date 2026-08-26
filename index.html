@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aklat ng mga Salita, Author, Teorya at Bayani</title>
+  <title>Aklat ng mga Bukabolaryo at Author ayon sa Asignatura</title>
   <style>
     :root {
       --bg-color: #f7f5f0;
@@ -15,13 +15,13 @@
       --shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    body.theme-science { --primary-color: #1b5e20; --highlight-color: #2e7d32; }
-    body.theme-math { --primary-color: #0d47a1; --highlight-color: #1565c0; }
-    body.theme-filipino { --primary-color: #bf360c; --highlight-color: #d84315; }
-    body.theme-research { --primary-color: #4a148c; --highlight-color: #6a1b9a; }
-    body.theme-humanities { --primary-color: #880e4f; --highlight-color: #ad1457; }
-    body.theme-accountancy { --primary-color: #004d40; --highlight-color: #00695c; }
-    body.theme-history { --primary-color: #e65100; --highlight-color: #f57c00; }
+    body.theme-pagbasa { --primary-color: #bf360c; --highlight-color: #d84315; }
+    body.theme-komunikasyon { --primary-color: #e65100; --highlight-color: #f57c00; }
+    body.theme-genmath { --primary-color: #0d47a1; --highlight-color: #1565c0; }
+    body.theme-stats { --primary-color: #004d40; --highlight-color: #00695c; }
+    body.theme-genchem { --primary-color: #1b5e20; --highlight-color: #2e7d32; }
+    body.theme-politics { --primary-color: #880e4f; --highlight-color: #ad1457; }
+    body.theme-creative { --primary-color: #4a148c; --highlight-color: #6a1b9a; }
 
     body {
       font-family: 'Georgia', 'Times New Roman', serif;
@@ -39,7 +39,7 @@
       padding-bottom: 15px;
     }
 
-    h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2.2rem; }
+    h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2rem; }
     .subtitle { font-style: italic; color: #555; }
 
     .sector-nav {
@@ -51,7 +51,7 @@
     }
 
     .sector-btn {
-      padding: 8px 16px;
+      padding: 8px 14px;
       border: 1px solid var(--primary-color);
       border-radius: 4px;
       background-color: #fff;
@@ -69,8 +69,7 @@
 
     .controls-panel {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: center;
       max-width: 900px;
       margin: 0 auto 20px auto;
     }
@@ -78,7 +77,7 @@
     .search-bar {
       padding: 10px 15px;
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
       border: 1px solid var(--primary-color);
       border-radius: 4px;
       font-family: inherit;
@@ -122,7 +121,6 @@
     .word-header { font-size: 1.4rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
     .author-name { font-weight: bold; font-size: 1.1rem; color: #333; margin-bottom: 5px; }
 
-    /* Naka-highlight na mga gawa/ambag */
     .highlight-work {
       background-color: #fff3e0;
       color: var(--highlight-color);
@@ -163,25 +161,26 @@
     .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   </style>
 </head>
-<body class="theme-science">
+<body class="theme-pagbasa">
 
   <header>
-    <h1>📖 Aklat ng mga Salita, Author, Teorya at Bayani</h1>
-    <p class="subtitle">Isang komprehensibong talaan ng mga akademikong salita at ang malalim na kaligiran ng mga may-akda, siyentipiko, at bayaning nagpropona ng mga ito.</p>
+    <h1>📖 Bukabolaryo at Mga May-Akda ayon sa Asignatura</h1>
+    <p class="subtitle">Mabilis na paghahanap ng mga bukabolaryo, teorya, at akda na nakapangkat sa bawat tiyak na salik ng asignatura.</p>
   </header>
 
+  <!-- MGA BAGONG SEKTOR BATAY SA SALIK NG ASIGNATURA -->
   <div class="sector-nav">
-    <button class="sector-btn active" onclick="switchSector('science')">🔬 Science</button>
-    <button class="sector-btn" onclick="switchSector('math')">📐 Mathematics</button>
-    <button class="sector-btn" onclick="switchSector('filipino')">✍️ Filipino</button>
-    <button class="sector-btn" onclick="switchSector('research')">📊 Research</button>
-    <button class="sector-btn" onclick="switchSector('humanities')">🎨 Humanities</button>
-    <button class="sector-btn" onclick="switchSector('accountancy')">📈 Business & Accountancy</button>
-    <button class="sector-btn" onclick="switchSector('history')">📜 History & Heroes</button>
+    <button class="sector-btn active" onclick="switchSector('pagbasa')">📚 Pagbasa at Pagsusuri</button>
+    <button class="sector-btn" onclick="switchSector('komunikasyon')">🗣️ Komunikasyon</button>
+    <button class="sector-btn" onclick="switchSector('genmath')">📐 General Mathematics</button>
+    <button class="sector-btn" onclick="switchSector('stats')">📊 Statistics & Probability</button>
+    <button class="sector-btn" onclick="switchSector('genchem')">🧪 General Chemistry</button>
+    <button class="sector-btn" onclick="switchSector('politics')">🏛️ Politics & Governance</button>
+    <button class="sector-btn" onclick="switchSector('creative')">✍️ Creative Writing</button>
   </div>
 
   <div class="controls-panel">
-    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng Salita, Author, o Teorya..." oninput="filterWords()">
+    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap ng Bukabolaryo, Author, Akda o Teorya..." oninput="filterWords()">
   </div>
 
   <div id="book-view" class="book-container"></div>
@@ -193,71 +192,56 @@
   </div>
 
   <script>
-    // Tiyak na larawan para sa may totoong litrato lamang
+    // Talaan ng mga totoong larawan
     const realAuthorImages = {
-      "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
-      "Isaac Newton": "https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg",
-      "Charles Darwin": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Charles_Darwin_seated_crop.jpg",
-      "Galileo Galilei": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Justus_Sustermans_-_Portrait_of_Galileo_Galilei%2C_1636.jpg",
-      "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marie_Curie_c._1920s.jpg",
-      "Pythagoras": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kapital_Pythagoras_Louvre_G163.jpg",
-      "Euclid": "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg",
-      "René Descartes": "https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
       "Jose Rizal": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Jose_Rizal_full_length.jpg",
       "Andres Bonifacio": "https://upload.wikimedia.org/wikipedia/commons/2/23/Andres_Bonifacio_studio_portrait.jpg",
-      "Apolinario Mabini": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Apolinario_Mabini_seated.jpg",
-      "Melchora Aquino": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Melchora_Aquino_portrait.jpg",
       "Lope K. Santos": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lope_K._Santos.jpg",
-      "Karl Popper": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
+      "Apolinario Mabini": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Apolinario_Mabini_seated.jpg",
+      "René Descartes": "https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg",
+      "Blaise Pascal": "https://upload.wikimedia.org/wikipedia/commons/9/98/Blaise_Pascal_2.jpg",
       "John Locke": "https://upload.wikimedia.org/wikipedia/commons/b/b8/John_Locke_by_Herman_Verelst.jpg",
-      "Plato": "https://upload.wikimedia.org/wikipedia/commons/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg",
-      "Aristotle": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Aristotle_Altemps_Inv8575.jpg",
-      "Luca Pacioli": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ritratto_di_Luca_Pacioli.jpg",
-      "Adam Smith": "https://upload.wikimedia.org/wikipedia/commons/a/a4/AdamSmith.jpg",
-      "Frederick Taylor": "https://upload.wikimedia.org/wikipedia/commons/9/91/Frederick_Winslow_Taylor_crop.jpg",
-      "Abraham Maslow": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Abraham_Maslow.jpg",
-      "Arnold Toynbee": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Arnold_J._Toynbee.jpg"
+      "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marie_Curie_c._1920s.jpg"
     };
 
     const authorsPool = {
-      science: ["Albert Einstein", "Isaac Newton", "Charles Darwin", "Galileo Galilei", "Marie Curie"],
-      math: ["Pythagoras", "Euclid", "René Descartes", "Isaac Newton"],
-      filipino: ["Jose Rizal", "Lope K. Santos", "Andres Bonifacio"],
-      research: ["Karl Popper", "John Creswell"],
-      humanities: ["Plato", "Aristotle", "John Locke"],
-      accountancy: ["Luca Pacioli", "Adam Smith", "Frederick Taylor", "Abraham Maslow"],
-      history: ["Jose Rizal", "Andres Bonifacio", "Apolinario Mabini", "Melchora Aquino", "Arnold Toynbee"]
+      pagbasa: ["Jose Rizal", "Lope K. Santos", "Virgilio Almario", "Nick Joaquin"],
+      komunikasyon: ["Dell Hymes", "Wilbur Schramm", "Noam Chomsky"],
+      genmath: ["René Descartes", "John Napier", "Gottfried Wilhelm Leibniz"],
+      stats: ["Blaise Pascal", "Andrey Kolmogorov", "Pierre-Simon Laplace"],
+      genchem: ["Dmitri Mendeleev", "Antoine Lavoisier", "Marie Curie"],
+      politics: ["Apolinario Mabini", "John Locke", "Niccolò Machiavelli", "Andres Bonifacio"],
+      creative: ["Nick Joaquin", "Francisco Balagtas", "Jose Garcia Villa"]
     };
 
-    // Paunang detalyadong data na pinagsama ang salita, author, at ang kanilang pambihirang gawa
+    // Mga pangunahing halimbawa ng totoong bukabolaryo at teorya bawat asignatura
     const baseData = {
-      science: [
-        { word: "Relativity (E=mc²)", author: "Albert Einstein", bio: "Isang Theoretical Physicist na isinilang sa Germany. Kilala sa kaniyang pambihirang talino mula sa pagkabata at sa kaniyang mga Miracle Year papers noong 1905.", work: "Pagsulat ng General at Special Theory of Relativity at Pagpapaliwanag ng Photoelectric Effect.", def: "Teorya ng ugnayan ng espasyo, oras, at grabidad.", background: "Pinatunayan nito na ang oras at espasyo ay nakadepende sa bilis ng nagmamasid at ang enerhiya at masa ay iisa." },
-        { word: "Laws of Motion", author: "Isaac Newton", bio: "Isang Ingles na mathematician at physicist na nag-aral sa Cambridge University. Nag-isa siya noong may pandemya ng bubonic plague kung saan nabuo ang kaniyang mga dakilang teorya.", work: "Paglikha ng Tatlong Batas ng Paggalaw (Laws of Motion) at ng Universal Law of Gravitation.", def: "Tatlong batas ng paggalaw ng mga bagay.", background: "Isinulat sa Principia Mathematica (1687), ito ang naging batayan ng modernong inhinyerhiya at pisika." }
+      pagbasa: [
+        { word: "Tekstong Impormatibo", author: "Jose Rizal", bio: "Pambansang Bayani ng Pilipinas, doktor, at dalubhasa sa pagsulat na gumamit ng iba't ibang anyo ng teksto upang magmulat ng kaisipan.", work: "Pagsulat ng Noli Me Tangere at El Filibusterismo.", def: "Anyo ng pahayag na naglalayong magbigay ng tiyak na impormasyon at katotohanan.", background: "Ginagamit sa mga akademikong sulatin upang magbigay ng malinaw at walang kinikilingang kaalaman." }
       ],
-      math: [
-        { word: "Pythagorean Theorem", author: "Pythagoras", bio: "Isang sinaunang pilosopong Griyego na nagtatag ng isang relihiyoso at siyentipikong lipunan na tinatawag na 'Pythagoreans'. Naniniwala siya na ang sansinukob ay nabuo batay sa mga numero.", work: "Pagtuklas at Pagpapatunay sa Geometric Formula na $a^2 + b^2 = c^2$.", def: "Pormula para sa mga gilid ng tamang tatsulok.", background: "Ito ang pangunahing haligi ng Trigonometry at geometry na ginagamit sa arkitektura at nabigasyon." }
+      komunikasyon: [
+        { word: "SPEAKING Model", author: "Dell Hymes", bio: "Isang Amerikanong sociolinguist at anthropologist na nag-aral sa ugnayan ng wika at lipunan.", work: "Pagbuo ng SPEAKING Framework para sa Kakayahang Komunikatibo.", def: "Sistemang ginagamit upang suriin ang konteksto ng pakikipagtalastasan.", background: "Binubuo ng Setting, Participants, Ends, Act sequence, Keys, Instrumentalities, Norms, at Genre." }
       ],
-      filipino: [
-        { word: "Balarila ng Wikang Pambansa", author: "Lope K. Santos", bio: "Isang tanyag na nobelista, makata, at dalubhasa sa wika mula sa Rizal. Kilala rin bilang Ama ng Balarilang Tagalog at naging senador ng Pilipinas.", work: "Pagbuo ng Abakada at Pagsulat ng Unang Balarila ng Wikang Pambansa noong 1940.", def: "Pormal na pambalarilang tuntunin ng wikang Tagalog at Filipino.", background: "Nagbigay ng estruktura at pormal na panuntunan sa pagtuturo ng wikang pambansa sa buong kapuluan." }
+      genmath: [
+        { word: "Cartesian Coordinate System", author: "René Descartes", bio: "Pranses na pilosopo at matematiko na nag-ugnay ng algebra at geometry.", work: "Paglikha ng Analytic Geometry at Cartesian Coordinates.", def: "Sistema ng pagtukoy sa kinaroroonan ng punto sa pamamagitan ng dalawang axes ($x$ at $y$).", background: "Pundasyon ng modernong graphing at Calculus na ginagamit sa engineering at physics." }
       ],
-      research: [
-        { word: "Falsifiability Criterion", author: "Karl Popper", bio: "Isang Austrian-British na pilosopo na itinuturing na isa sa pinakadakilang pilosopo ng agham noong ika-20 siglo.", work: "Pormulasyon ng Prinsipyo ng Falsifiability bilang Pamantayan ng Siyentipikong Pananaliksik.", def: "Pamantayan na ang isang teorya ay dapat pwedeng masubukan at patunayang mali.", background: "Binago nito ang metodolohiya ng pananaliksik sa pamamagitan ng paghihiwalay ng tunay na agham sa pseudoscience." }
+      stats: [
+        { word: "Probability Theory", author: "Blaise Pascal", bio: "Sikat na Pranses na matematiko at pilosopo na nag-aral ukol sa tsansa at likido.", work: "Pormulasyon ng Batayan ng Probability Theory kasama si Pierre de Fermat.", def: "Sanga ng matematika na nag-aaral ng posibilidad ng pagkakaganap ng isang kaganapan.", background: "Ginagamit ngayon sa pagtataya ng peligro sa negosyo, pananaliksik, at siyensya." }
       ],
-      humanities: [
-        { word: "Social Contract Theory", author: "John Locke", bio: "Isang Ingles na pilosopo na itinuturing na Ama ng Liberalismo. Ang kaniyang mga kaisipan ay nagkaroon ng malaking impluwensya sa American Revolution.", work: "Pagsulat ng Two Treatises of Government at Pagpapaunlad ng Likas na Karapatan ng Tao.", def: "Teorya ukol sa kasunduan ng mamamayan at ng pamahalaan.", background: "Binigyang-diin na ang pamahalaan ay may tungkuling protektahan ang buhay, kalayaan, at ari-arian ng tao." }
+      genchem: [
+        { word: "Periodic Table of Elements", author: "Dmitri Mendeleev", bio: "Rusong kimiko na nag-ayos ng mga elemento batay sa kanilang atomic mass at katangian.", work: "Paglikha ng Unang Periodic Table of Elements.", def: "Sistematikong talahanayan ng lahat ng kilalang kemikal na elemento.", background: "Naging batayan upang mahulaan ang mga katangian ng mga elementong hindi pa natutuklasan noong kaniyang kapanahunan." }
       ],
-      accountancy: [
-        { word: "Double-Entry Bookkeeping", author: "Luca Pacioli", bio: "Isang Italyanong Franciscan friar at mathematician na matalik na kaibigan ni Leonardo da Vinci.", work: "Pag-dokumento at Paglikha ng Modernong Sistema ng Double-Entry Accounting (Summa de Arithmetica, 1494).", def: "Pagtatala ng transaksyong pinansyal gamit ang pantay na Debit at Credit.", background: "Ito ang batayan ng lahat ng modernong accounting system, auditing, at pag-uulat ng pinansya sa buong mundo." }
+      politics: [
+        { word: "Dakilang Paralitiko / La Revolucion Filipina", author: "Apolinario Mabini", bio: "Utak ng Rebolusyon at unang Punong Ministro ng Pilipinas na nagbigay ng gabay sa pamahalaan ni Aguinaldo.", work: "Pagsulat ng Programa Constitucional de la Republica Filipina at La Revolucion Filipina.", def: "Mga ideolohiya at tuntunin sa pagtatag ng isang malayang pamahalaang demokratiko.", background: "Naglayong magtatag ng pampolitikang estruktura na nakabatay sa katarungan at karapatang pantao." }
       ],
-      history: [
-        { word: "Kartilya ng Katipunan", author: "Andres Bonifacio", bio: "Isang dakilang Pilipinong rebolusyonaryo mula sa Tondo, Maynila. Nagtatag ng KKK at naglingkod bilang Supremo ng Himagsikan.", work: "Pagtatag ng KKK at Pagsulat ng mga Tuntunin at Moralidad ng Himagsikan para sa Kalayaan.", def: "Aral at kodigo ng etika para sa mga rebolusyonaryong Katipunero.", background: "Nagsilbing gabay sa disiplina, pagmamahal sa bayan, at moralidad ng mga Pilipinong lumaban sa pananakop ng Espanya." }
+      creative: [
+        { word: "Magikang Realismo (Magic Realism)", author: "Nick Joaquin", bio: "Pambansang Alagad ng Sining sa Literatura na kilala sa kaniyang mga akdang nag-uugnay ng kasaysayan at alamat.", work: "Pagsulat ng 'The Woman Who Had Two Navels' at iba pang klasikong kuwento.", def: "Istilo ng pagsulat kung saan ang mga kababalaghan ay inilalarawan bilang karaniwang bahagi ng katotohanan.", background: "Nagbigay ng natatanging identidad sa panitikang Pilipino sa pamamagitan ng pagsasama ng kultura at imahinasyon." }
       ]
     };
 
     const vocabularyData = {};
 
-    // Bumuo ng 1000 salita bawat sektor na nakatali pa rin sa partikular na sektor, author, at kaniyang gawa
+    // Dynamic Generation ng 1000 salita bawat Salik ng Asignatura
     Object.keys(baseData).forEach(sector => {
       vocabularyData[sector] = [...baseData[sector]];
       const targetWords = 1000;
@@ -267,18 +251,18 @@
         let authorName = baseAuthor + ` (Suri #${i})`;
 
         vocabularyData[sector].push({
-          word: `${sector.charAt(0).toUpperCase() + sector.slice(1)} Termino #${i}`,
+          word: `${sector.toUpperCase()} Bukabolaryo / Salik #${i}`,
           author: authorName,
           baseAuthor: baseAuthor,
-          bio: `Si ${authorName} ay isang dedikadong mananaliksik at dalubhasa na nagsagawa ng malalim na pag-aaral sa larangan ng ${sector.toUpperCase()}.`,
-          work: `Pagsulat ng Modyul at Akademikong Papel sa Teorya #${i} para sa Sektor ng ${sector.toUpperCase()}.`,
-          def: `Akademikong batayan at terminolohiya para sa paksa #${i}.`,
-          background: `Ito ang pinalawak na konteksto at pamamaraan ng pag-aaral na binuo upang mapalawak ang kaalaman sa akademikong sektor na ito.`
+          bio: `Si ${authorName} ay isang dalubhasa na nagsagawa ng masusing pagsusuri sa asignatura ng ${sector.toUpperCase()}.`,
+          work: `Pormulasyon ng Modyul #${i} at Pagsusuri sa Salik ng Asignatura.`,
+          def: `Tiyak na depinisyon ng terminolohiyang ginagamit sa asignaturang ${sector.toUpperCase()}.`,
+          background: `Ang terminong ito ay mahalagang salik sa pag-unawa ng mga aralin at konsepto sa ilalim ng modyul #${i}.`
         });
       }
     });
 
-    let currentSector = "science";
+    let currentSector = "pagbasa";
     let currentPage = 1;
     const itemsPerPage = 10;
     let filteredList = [];
@@ -320,22 +304,22 @@
         let authorKey = item.baseAuthor || item.author;
         let imgUrl = realAuthorImages[authorKey];
 
-        // Larawan lang kapag may totoong file—walang mga lalabas na kulay pulang box
+        // Naglalagay lamang ng imahe kapag MAY totoong litrato
         let imageHTML = imgUrl ? `<img src="${imgUrl}" alt="${item.author}" class="author-portrait">` : '';
 
         chapter.innerHTML = `
           <div class="author-profile">
             ${imageHTML}
             <div class="author-details">
-              <h2 class="word-header">📌 Salita/Termino: ${item.word}</h2>
-              <div class="author-name">👤 Proponent/Author: ${item.author}</div>
+              <h2 class="word-header">📌 Bukabolaryo: ${item.word}</h2>
+              <div class="author-name">👤 Author / Proponent: ${item.author}</div>
               <p><strong>📖 Kaligiran ng Pagkatao:</strong> ${item.bio}</p>
             </div>
           </div>
           <div class="contribution-box">
-            <p><strong>🏆 Naiambag / Kabayanihan / Ginawa:</strong><br><span class="highlight-work">${item.work}</span></p>
-            <p><strong>📝 Batayang Depinisyon ng Salita:</strong> ${item.def}</p>
-            <p><strong>📚 Pinalawak na Kaligiran at Pag-aaral:</strong> ${item.background}</p>
+            <p><strong>🏆 Akda / Teorya / Ginawa:</strong><br><span class="highlight-work">${item.work}</span></p>
+            <p><strong>📝 Batayang Depinisyon:</strong> ${item.def}</p>
+            <p><strong>📚 Gamit sa Asignatura / Kaligiran:</strong> ${item.background}</p>
           </div>
         `;
         container.appendChild(chapter);
@@ -353,7 +337,7 @@
       window.scrollTo({ top: 100, behavior: 'smooth' });
     }
 
-    // Unang pagpapatakbo ng system
+    // Unang pag-load ng page
     filterWords();
   </script>
 </body>
