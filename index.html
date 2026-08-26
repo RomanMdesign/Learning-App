@@ -3,260 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aklat at Brochure: May-Akda at Bukabolaryo</title>
+  <title>Vocabulary Bank</title>
   <style>
     :root {
-      --bg-color: #f4f1ea;
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text-color: #2b2b2b;
-      --primary-color: #3e2723;
-      --border-color: #d7ccc8;
-      --highlight-color: #d84315;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --text: #1e293b;
+      --border: #e2e8f0;
     }
 
-    body.theme-science { --primary-color: #1b5e20; --highlight-color: #2e7d32; }
-    body.theme-math { --primary-color: #0d47a1; --highlight-color: #1565c0; }
-    body.theme-filipino { --primary-color: #bf360c; --highlight-color: #d84315; }
-    body.theme-research { --primary-color: #4a148c; --highlight-color: #6a1b9a; }
-    body.theme-humanities { --primary-color: #880e4f; --highlight-color: #ad1457; }
-    body.theme-accountancy { --primary-color: #004d40; --highlight-color: #00695c; }
-    body.theme-history { --primary-color: #e65100; --highlight-color: #f57c00; }
-
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
       padding: 20px;
-      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     header {
       text-align: center;
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 15px;
+      margin-bottom: 30px;
     }
 
-    h1 { margin-bottom: 5px; color: var(--primary-color); font-size: 2.2rem; }
-    .subtitle { font-style: italic; color: #555; }
+    h1 {
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
 
-    .mode-switch-container {
+    .controls {
       display: flex;
-      justify-content: center;
       gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .mode-btn {
-      padding: 12px 24px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: 2px solid var(--primary-color);
-      background: #fff;
-      color: var(--primary-color);
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow);
-    }
-
-    .mode-btn.active {
-      background: var(--primary-color);
-      color: #fff;
-    }
-
-    .sector-nav {
-      display: flex;
+      margin-bottom: 25px;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
     }
 
-    .sector-btn {
-      padding: 8px 16px;
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      background-color: #fff;
-      color: var(--primary-color);
-      font-family: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .sector-btn.active, .sector-btn:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    .controls-panel {
-      display: flex;
-      justify-content: center;
-      max-width: 900px;
-      margin: 0 auto 20px auto;
-    }
-
-    .search-bar {
+    select, input {
       padding: 10px 15px;
-      width: 100%;
-      max-width: 450px;
-      border: 1px solid var(--primary-color);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 1rem;
-    }
-
-    .book-container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .book-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-left: 6px solid var(--primary-color);
-      padding: 25px;
+      border: 1px solid var(--border);
       border-radius: 6px;
-      box-shadow: var(--shadow);
+      font-size: 16px;
+      outline: none;
     }
 
-    .author-profile {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .author-portrait {
-      width: 130px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid var(--border-color);
-      flex-shrink: 0;
-    }
-
-    .author-details { flex-grow: 1; }
-    .author-name { font-size: 1.6rem; color: var(--primary-color); margin: 0 0 5px 0; font-weight: bold; }
-
-    .highlight-work {
-      background-color: #fff3e0;
-      color: var(--highlight-color);
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding: 4px 10px;
-      border-radius: 4px;
-      border-left: 4px solid var(--highlight-color);
-      display: inline-block;
-      margin: 8px 0;
-    }
-
-    .word-title { font-size: 1.6rem; color: var(--primary-color); margin: 0 0 10px 0; font-weight: bold; }
-
-    .pagination-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin: 30px 0;
-    }
-
-    .page-btn {
-      padding: 8px 16px;
-      border: 1px solid var(--primary-color);
-      background: #fff;
-      color: var(--primary-color);
+    select {
+      background-color: var(--card-bg);
       cursor: pointer;
-      font-family: inherit;
-      font-weight: bold;
     }
 
-    .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    input {
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 8px 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card .usage {
+      font-style: italic;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    .no-result {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: #64748b;
+      padding: 40px;
+    }
   </style>
 </head>
-<body class="theme-accountancy">
+<body>
 
-  <header>
-    <h1>📖 Sistema ng Hiwalay na Brochure</h1>
-    <p class="subtitle">Pumili sa pagitan ng Brochure ng mga May-akda o Brochure ng mga Bokabularyo sa bawat Asignatura.</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Talasalitaan & Bokabularyo</h1>
+      <p>Mabilisang sanggunian para sa iba't ibang asignatura</p>
+    </header>
 
-  <div class="mode-switch-container">
-    <button class="mode-btn" id="btn-mode-authors" onclick="switchMode('authors')">👤 Brochure ng mga May-Akda at Bayani</button>
-    <button class="mode-btn active" id="btn-mode-vocab" onclick="switchMode('vocab')">📚 Brochure ng mga Bukabolaryo at Salita</button>
-  </div>
+    <div class="controls">
+      <select id="categorySelect">
+        <option value="accountancy">Accountancy / Pagtutuos</option>
+        <option value="science">Siyensya</option>
+        <option value="math">Matematika</option>
+        <option value="research">Pananaliksik</option>
+        <option value="filipino">Filipino</option>
+        <option value="humanities">Humanidades</option>
+        <option value="history">Kasaysayan</option>
+      </select>
 
-  <div class="sector-nav">
-    <button class="sector-btn active" onclick="switchSector('accountancy')">📈 Accountancy</button>
-    <button class="sector-btn" onclick="switchSector('science')">🔬 Science</button>
-    <button class="sector-btn" onclick="switchSector('math')">📐 Mathematics</button>
-    <button class="sector-btn" onclick="switchSector('research')">📊 Research</button>
-    <button class="sector-btn" onclick="switchSector('filipino')">✍️ Filipino</button>
-    <button class="sector-btn" onclick="switchSector('humanities')">🎨 Humanities</button>
-    <button class="sector-btn" onclick="switchSector('history')">📜 History</button>
-  </div>
+      <input type="text" id="searchInput" placeholder="Maghanap ng salita o kahulugan...">
+    </div>
 
-  <div class="controls-panel">
-    <input type="text" id="search-input" class="search-bar" placeholder="Maghanap..." oninput="filterData()">
-  </div>
-
-  <div id="display-view" class="book-container"></div>
-
-  <div class="pagination-container">
-    <button class="page-btn" id="prev-page" onclick="changePage(-1)">Previous Page</button>
-    <span id="page-info">Pahina 1</span>
-    <button class="page-btn" id="next-page" onclick="changePage(1)">Next Page</button>
+    <div class="grid" id="vocabGrid"></div>
   </div>
 
   <script>
-    const realAuthorImages = {
-      "Albert Einstein": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg",
-      "Isaac Newton": "https://upload.wikimedia.org/wikipedia/commons/3/39/GodfreyKneller-IsaacNewton-1689.jpg",
-      "Marie Curie": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Marie_Curie_c._1920s.jpg",
-      "Pythagoras": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Kapital_Pythagoras_Louvre_G163.jpg",
-      "Euclid": "https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg",
-      "Jose Rizal": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Jose_Rizal_full_length.jpg",
-      "Andres Bonifacio": "https://upload.wikimedia.org/wikipedia/commons/2/23/Andres_Bonifacio_studio_portrait.jpg",
-      "Apolinario Mabini": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Apolinario_Mabini_seated.jpg",
-      "Lope K. Santos": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Lope_K._Santos.jpg",
-      "Karl Popper": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
-      "John Locke": "https://upload.wikimedia.org/wikipedia/commons/b/b8/John_Locke_by_Herman_Verelst.jpg",
-      "Luca Pacioli": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Ritratto_di_Luca_Pacioli.jpg"
-    };
-
-    const authorsDatabase = {
-      accountancy: [
-        { name: "Luca Pacioli", role: "Ama ng Accountancy", bio: "Isang Italyanong Franciscan friar at matematiko na nagdokumento sa kauna-unahang organisadong sistema ng bookkeeping sa daigdig.", contribution: "Double-Entry Bookkeeping System (Summa de Arithmetica, 1494)" }
-      ],
-      science: [
-        { name: "Albert Einstein", role: "Theoretical Physicist", bio: "Siyentipikong nagpabago sa larangan ng pisika sa pamamagitan ng kaniyang teorya ng relatibidad.", contribution: "Theory of Relativity (E=mc²) at Photoelectric Effect" },
-        { name: "Isaac Newton", role: "Mathematician at Physicist", bio: "Nagtatag ng mga batayang batas ng pisika at pormulasyon ng grabidad.", contribution: "Laws of Motion at Law of Universal Gravitation" }
-      ],
-      math: [
-        { name: "Pythagoras", role: "Sinaunang Matematiko", bio: "Griyegong pilosopo na nagtatag ng mga tuntunin sa heometriya.", contribution: "Pythagorean Theorem ($a^2 + b^2 = c^2$)" }
-      ],
-      research: [
-        { name: "Karl Popper", role: "Pilosopo ng Agham", bio: "Nagbigay ng pamantayan ng siyentipikong empirikong pananaliksik.", contribution: "Falsifiability Criterion" }
-      ],
-      filipino: [
-        { name: "Lope K. Santos", role: "Ama ng Balarila", bio: "Makata at dalubwika na bumuo ng kauna-unahang pormal na gramatikang Tagalog.", contribution: "Balarila ng Wikang Pambansa at Abakada" }
-      ],
-      humanities: [
-        { name: "John Locke", role: "Pilosopo", bio: "Ama ng Liberalismo at nagtatag ng teorya ng pantay na karapatan.", contribution: "Social Contract Theory at Natural Rights" }
-      ],
-      history: [
-        { name: "Andres Bonifacio", role: "Supremo ng Katipunan", bio: "Pinuno ng rebolusyong Pilipino laban sa pananakop ng Espanya.", contribution: "Pagtatag ng KKK at Pagsulat ng Kartilya" }
-      ]
-    };
-
-    // MGA TERMINOLOHIYA SA ACCOUNTING
     const vocabularyDatabase = {
       accountancy: [
-        { word: "Pagtutuos (Accountancy / Accounting)", def: "Ang sining ng pagtatala, pag-uuri, at pagbubuod sa paraang may kabuluhan at sa halaga ng salapi, ng mga transaksyon at kaganapan na may katangiang pinansyal.", usage: "Pangunahing disiplina at kurso sa negosyo." },
+        // Mula sa Filipino Terminologies for Accountancy
+        { word: "Pagtutuos (Accountancy / Accounting)", def: "Ang sining ng pagtatala, pag-uuri, at pagbubuod sa paraang may kabuluhan at sa halaga ng salapi, ng mga transaksyon at kaganapan na may katangiang pinansyal.", usage: "Pangunahing disiplina sa negosyo." },
         { word: "Akwenta / Kuwenta (Account)", def: "Isang pormal na talaan ng mga transaksyong pinansyal na may kaugnayan sa isang partikular na asset, liability, equity, kita, o gastusin.", usage: "Inilalagay sa General Ledger." },
         { word: "Tasa / Pagtatasa (Assessment / Valuation)", def: "Ang proseso ng pagtatakda ng halagang pinansyal o kaukulang halaga ng isang ari-arian o pananagutan.", usage: "Ginagamit sa pagtutuos ng buwis at audit." },
         { word: "Puhunan (Capital / Equity)", def: "Ang kabuuang halaga ng salapi o ari-arian na inilagay ng may-ari sa negosyo.", usage: "Makikita sa Statement of Changes in Equity." },
@@ -265,11 +145,37 @@
         { word: "Nagkakautang (Debtor)", def: "Isang tao o entidad na may umiiral na utang o obligasyong pinansyal sa negosyo.", usage: "Pinagmumulan ng Accounts Receivable." },
         { word: "Kagastusan (Expense)", def: "Ang halaga ng salapi na ginastos sa pagpapatakbo ng negosyo upang makalikha ng kita.", usage: "Binabawas sa Revenue upang makuha ang Net Income." },
         { word: "Pautang / Utang (Liability)", def: "Mga kasalukuyang obligasyong pinansyal ng kumpanya na nagmula sa mga nagdaang transaksyon.", usage: "Iniuulat sa Balance Sheet." },
-        { word: "Talaarawan ng Pagtutuos (Journal)", def: "Ang aklat ng unang pagtatala kung saan kronolohikong isinusulat ang mga transaksyon.", usage: "Ginagamit sa pamamaraang Journalizing." },
-        { word: "Audit (Pagsusuri ng Kuwenta)", def: "Opisyal na inspeksyon at beripikasyon sa mga rekord at laporan ng pinansyal ng isang organisasyon.", usage: "Ginagawa ng Certified Public Accountant (CPA)." },
-        { word: "Cash Flow (Daloy ng Salapi)", def: "Ang kabuuang halaga ng salapi na pumasok at lumabas sa isang negosyo sa loob ng isang partikular na panahon.", usage: "Iniuulat sa Statement of Cash Flows." },
-        { word: "Depreciation (Pagbaba ng Halaga)", def: "Ang paghahati o pagpataw ng halaga ng isang fixed asset habang ginagamit ito sa paglipas ng panahon.", usage: "Iniuulat bilang gastusin sa Income Statement." },
-        { word: "Net Income (Netong Kita)", def: "Ang natirang kita matapos ibawas ang lahat ng gastusin, buwis, at cost of goods sold mula sa kabuuang benta.", usage: "Tinatawag ding Bottom Line sa Income Statement." }
+        { word: "Talaarawan ng Pagtutuos (Journal)", def: "Ang aklat ng unang pagtatala (book of original entry) kung saan kronolohikong isinusulat ang mga transaksyon.", usage: "Ginagamit sa pamamaraang Journalizing." },
+        { word: "Audit / Pagsusuri ng Kuwenta (Auditing)", def: "Opisyal at independyenteng inspeksyon ng mga rekord at laporan ng pinansyal ng isang organisasyon.", usage: "Isinasagawa ng Certified Public Accountant (CPA)." },
+        { word: "Accounts Payable / Bayaring Utang", def: "Mga panandaliang obligasyon o utang sa mga supplier para sa mga produktong nabili nang pautang.", usage: "Bahagi ng Current Liabilities sa Balance Sheet." },
+        { word: "Accounts Receivable / Silingin / Singiling-Ganti", def: "Mga perang dapat kolektahin mula sa mga kostumer para sa mga ibinentang produkto o serbisyo.", usage: "Bahagi ng Current Assets sa Balance Sheet." },
+        { word: "Balance Sheet / Pahayag ng Timbang", def: "Isang ulat pinansyal na nagpapakita ng kabuuang ari-arian (assets), utang (liabilities), at puhunan (equity) sa isang takdang petsa.", usage: "Pangunahing Financial Statement ng kumpanya." },
+        { word: "General Ledger / Inang-Buku / Pangkalahatang Aklat-Ulat", def: "Ang pangunahing aklat ng mga kuwenta kung saan iniipon at inililipat ang lahat ng journal entries.", usage: "Kinaroroonan ng T-Accounts." },
+        { word: "Trial Balance / Timbang na Subok", def: "Isang talaan ng lahat ng general ledger accounts at ang kanilang mga debit o credit balances upang masuri ang pagkakapantay ng mga ito.", usage: "Ginagawa bago ihanda ang mga Financial Statement." },
+        
+        // Mula sa 100 Accounting Terms & AccountingCoach
+        { word: "Accrual Accounting", def: "Sistema ng pagtatala kung saan ang kita at gastusin ay kinikilala kapag ito ay nakuha o naganap na, bayad man ito o hindi pa.", usage: "Ginagamit ng karamihan sa mga korporasyon." },
+        { word: "Amortization", def: "Ang unti-unting pagbabawas ng halaga ng isang intangible asset sa paglipas ng panahon.", usage: "Katulad ng depreciation ngunit para sa mga walang pisikal na anyo tulad ng patents." },
+        { word: "Bad Debts / Luho o Tapong Utang", def: "Mga utang ng kostumer na nakumpirmang hindi na kailanman makokolekta ng negosyo.", usage: "Inirerekord bilang expense." },
+        { word: "Cash Flow / Daloy ng Salapi", def: "Ang kabuuang halaga ng salapi na pumasok at lumabas sa isang negosyo sa loob ng isang partikular na panahon.", usage: "Iniuulat sa Statement of Cash Flows." },
+        { word: "Chart of Accounts (COA)", def: "Isang organisadong talaan ng lahat ng pangalan at numero ng akwenta (accounts) na ginagamit ng kumpanya.", usage: "Nagsisilbing gabay sa pagtatala sa General Ledger." },
+        { word: "Cost of Goods Sold (COGS)", def: "Ang direktang gastos sa paggawa o pagbili ng mga produktong naibenta ng kumpanya.", usage: "Binabawas sa Gross Sales para makuha ang Gross Profit." },
+        { word: "Credit (Kredito)", def: "Pagtatala sa kanang bahagi ng isang account entry; nagpapababa ng Assets o nagpapataas ng Liabilities at Equity.", usage: "Bahagi ng Double-Entry Bookkeeping." },
+        { word: "Debit (Debito)", def: "Pagtatala sa kaliwang bahagi ng isang account entry; nagpapataas ng Assets o nagpapababa ng Liabilities at Equity.", usage: "Bahagi ng Double-Entry Bookkeeping." },
+        { word: "Depreciation / Pagbaba ng Halaga", def: "Ang paghahati o pagpataw ng halaga ng isang tangible fixed asset habang ginagamit ito sa paglipas ng panahon.", usage: "Iniuulat bilang gastusin sa Income Statement." },
+        { word: "Dividends / Tubo o Ganansya", def: "Bahagi ng kita ng korporasyon na ipinapamahagi sa mga stockholder o may-ari ng shares.", usage: "Ipinapasa mula sa Retained Earnings." },
+        { word: "Double-Entry Bookkeeping", def: "Sistema kung saan ang bawat transaksyong pinansyal ay may dalawang katumbas na tala: isang Debit at isang Credit.", usage: "Pangunahing pundasyon ng modernong accounting." },
+        { word: "Fiscal Year", def: "Isang 12-buwang accounting period na ginagamit ng kumpanya para sa ulat pinansyal, na pwedeng hindi magsimula sa Enero 1.", usage: "Gamit sa taunang pag-uulat ng buwis at kita." },
+        { word: "Gross Profit / Kasagipang Kita", def: "Ang kita na natira matapos ibawas ang direktang gastos sa paggawa/pagbili ng paninda (COGS) mula sa kabuuang benta.", usage: "Gross Profit = Sales - COGS." },
+        { word: "Income Statement / Pahayag ng Kita", def: "Ulat pinansyal na nagpapakita ng kabuuang benta, gastusin, at netong kita o lugi sa loob ng isang partikular na panahon.", usage: "Tinatawag ding Profit and Loss Statement (P&L)." },
+        { word: "Intangible Assets", def: "Mga non-physical assets ng kumpanya na may halagang pinansyal tulad ng patents, trademarks, at copyrights.", usage: "Nasa ilalim ng Non-Current Assets." },
+        { word: "Inventory / Imbentaryo", def: "Mga nakaimbak na paninda, hilaw na materyales, o produktong ginagawa pa lamang na nakalaan para ibenta.", usage: "Iniuulat sa Current Assets." },
+        { word: "Liquidity", def: "Ang kakayahan ng isang negosyo na mabilis na gawing cash ang mga asset nito upang makapagbayad ng panandaliang utang.", usage: "Kinukwenta gamit ang Current Ratio." },
+        { word: "Net Income / Netong Kita", def: "Ang natirang kita matapos ibawas ang lahat ng gastusin, buwis, at cost of goods sold mula sa kabuuang benta.", usage: "Tinatawag ding Bottom Line sa Income Statement." },
+        { word: "Petty Cash / Barya-baryang Salapi", def: "Maliit na halaga ng cash na inilalaan para sa mga maliliit at pangaraw-araw na gastusin ng opisina.", usage: "Inilalagay sa Petty Cash Voucher system." },
+        { word: "Retained Earnings", def: "Ang naipong netong kita ng kumpanya na hindi ipinamahagi bilang dividends kundi muling itinabi para sa negosyo.", usage: "Nasa ilalim ng Stockholders' Equity." },
+        { word: "Revenue / Gross Sales", def: "Ang kabuuang perang pumasok mula sa pagbebenta ng produkto o pagbibigay ng serbisyo bago ibawas ang mga gastos.", usage: "Nasa pinakataas na linya ng Income Statement." },
+        { word: "Working Capital", def: "Ang natitirang kapital para sa pang-araw-araw na operasyon ng negosyo (Current Assets minus Current Liabilities).", usage: "Pukos sa short-term financial health." }
       ],
       science: [
         { word: "Photosynthesis", def: "Proseso ng paggawa ng pagkain ng mga halaman gamit ang liwanag ng araw.", usage: "Aralin sa Biology." }
@@ -291,134 +197,44 @@
       ]
     };
 
-    const fullAuthors = {};
-    const fullVocab = {};
+    const categorySelect = document.getElementById('categorySelect');
+    const searchInput = document.getElementById('searchInput');
+    const vocabGrid = document.getElementById('vocabGrid');
 
-    Object.keys(authorsDatabase).forEach(sec => {
-      fullAuthors[sec] = [...authorsDatabase[sec]];
-      for (let i = fullAuthors[sec].length + 1; i <= 1000; i++) {
-        fullAuthors[sec].push({
-          name: `${sec.toUpperCase()} Author #${i}`,
-          role: `Mananaliksik sa ${sec.toUpperCase()}`,
-          bio: `Isang dalubhasa na nagsagawa ng masusing pag-aaral sa ilalim ng sektor ng ${sec.toUpperCase()}.`,
-          contribution: `Teorya at Modyul #${i}`
-        });
-      }
-    });
+    function renderCards() {
+      const selectedCategory = categorySelect.value;
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const list = vocabularyDatabase[selectedCategory] || [];
 
-    Object.keys(vocabularyDatabase).forEach(sec => {
-      fullVocab[sec] = [...vocabularyDatabase[sec]];
-      for (let i = fullVocab[sec].length + 1; i <= 1000; i++) {
-        fullVocab[sec].push({
-          word: `${sec.toUpperCase()} Termino #${i}`,
-          def: `Batayang akademikong depinisyon ng salita sa asignaturang ${sec.toUpperCase()}.`,
-          usage: `Ginagamit sa Modyul #${i}.`
-        });
-      }
-    });
+      const filteredList = list.filter(item => 
+        item.word.toLowerCase().includes(searchTerm) || 
+        item.def.toLowerCase().includes(searchTerm)
+      );
 
-    let currentMode = "vocab";
-    let currentSector = "accountancy";
-    let currentPage = 1;
-    const itemsPerPage = 10;
-    let filteredList = [];
+      vocabGrid.innerHTML = '';
 
-    function switchMode(mode) {
-      currentMode = mode;
-      document.getElementById('btn-mode-authors').classList.toggle('active', mode === 'authors');
-      document.getElementById('btn-mode-vocab').classList.toggle('active', mode === 'vocab');
-      document.getElementById('search-input').value = "";
-      currentPage = 1;
-      filterData();
-    }
-
-    function switchSector(sector) {
-      currentSector = sector;
-      document.body.className = `theme-${sector}`;
-      document.querySelectorAll('.sector-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('search-input').value = "";
-      currentPage = 1;
-      filterData();
-    }
-
-    function filterData() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      
-      if (currentMode === 'authors') {
-        filteredList = fullAuthors[currentSector].filter(item => 
-          item.name.toLowerCase().includes(query) || 
-          item.role.toLowerCase().includes(query) ||
-          item.contribution.toLowerCase().includes(query)
-        );
-      } else {
-        filteredList = fullVocab[currentSector].filter(item => 
-          item.word.toLowerCase().includes(query) || 
-          item.def.toLowerCase().includes(query)
-        );
-      }
-      
-      currentPage = 1;
-      renderBrochure();
-    }
-
-    function renderBrochure() {
-      const container = document.getElementById('display-view');
-      container.innerHTML = "";
-
-      const start = (currentPage - 1) * itemsPerPage;
-      const end = start + itemsPerPage;
-      const paginatedItems = filteredList.slice(start, end);
-
-      if (currentMode === 'authors') {
-        paginatedItems.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'book-card';
-
-          let imgUrl = realAuthorImages[item.name];
-          let imageHTML = imgUrl ? `<img src="${imgUrl}" alt="${item.name}" class="author-portrait">` : '';
-
-          card.innerHTML = `
-            <div class="author-profile">
-              ${imageHTML}
-              <div class="author-details">
-                <h2 class="author-name">👤 ${item.name}</h2>
-                <div style="font-style: italic; color: #555;">${item.role}</div>
-                <p><strong>📖 Kaligiran ng Pagkatao / Talambuhay:</strong><br>${item.bio}</p>
-                <div><strong>🏆 Naiambag na Teorya / Kabayanihan / Ginawa:</strong></div>
-                <div class="highlight-work">${item.contribution}</div>
-              </div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-      } else {
-        paginatedItems.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'book-card';
-
-          card.innerHTML = `
-            <h2 class="word-title">📌 Salita / Termino: ${item.word}</h2>
-            <p><strong>📝 Batayang Depinisyon:</strong><br>${item.def}</p>
-            <p><strong>📚 Gamit sa Asignatura / Konteksto:</strong><br>${item.usage}</p>
-          `;
-          container.appendChild(card);
-        });
+      if (filteredList.length === 0) {
+        vocabGrid.innerHTML = `<div class="no-result">Walang nahanap na terminolohiya sa kategoryang ito.</div>`;
+        return;
       }
 
-      const totalPages = Math.ceil(filteredList.length / itemsPerPage) || 1;
-      document.getElementById('page-info').innerText = `Pahina ${currentPage} ng ${totalPages}`;
-      document.getElementById('prev-page').disabled = currentPage === 1;
-      document.getElementById('next-page').disabled = currentPage >= totalPages;
+      filteredList.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <h3>${item.word}</h3>
+          <p><strong>Kahulugan:</strong> ${item.def}</p>
+          <p class="usage"><strong>Paggamit:</strong> ${item.usage}</p>
+        `;
+        vocabGrid.appendChild(card);
+      });
     }
 
-    function changePage(direction) {
-      currentPage += direction;
-      renderBrochure();
-      window.scrollTo({ top: 100, behavior: 'smooth' });
-    }
+    categorySelect.addEventListener('change', renderCards);
+    searchInput.addEventListener('input', renderCards);
 
-    filterData();
+    // Unang pag-load ng mga card
+    renderCards();
   </script>
 </body>
 </html>
